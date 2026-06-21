@@ -1,0 +1,8 @@
+# Ignore local runtime files
+chat_history.json
+scratchpad.txt
+saves/
+
+# Ignore Python cache
+__pycache__/
+*.pyc

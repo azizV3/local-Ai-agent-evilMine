@@ -1,0 +1,10 @@
+# Ignore local runtime files
+chat_history.json
+scratchpad.txt
+saves/
+# Ignore the virtual environment entirely
+venv/
+.venv/
+# Ignore Python cache
+__pycache__/
+*.pyc
