@@ -1,7 +1,7 @@
 from openai import OpenAI 
 import json
 import os
-
+import importlib
 import re
 from pathlib import Path
 
@@ -14,16 +14,37 @@ PROJECT_ROOT = SCRIPT_DIR.parent
 SAVE_DIR = PROJECT_ROOT / "saves"
 HISTORY_FILE = PROJECT_ROOT / "chat_history.json"
 SCRATCHPAD_FILE = PROJECT_ROOT / "scratchpad.txt"
-MAX_CONTEXT_TOKENS = 10000 # Conservative safe boundary for 7B models
+MAX_CONTEXT_TOKENS = 16000
 AUTONOMOUS_MODE = True
 ENABLE_LOOP_DETECTOR = True
 CONSECUTIVE_LOOPS = 0
+ALLOW_PARALLEL_TOOLS = False
+VAR_CURRENT_TEMP = 0.2
 
 client = OpenAI(
     base_url='http://localhost:11434/v1/',
-    api_key='ollama'  # Required by the SDK, but ignored by Ollama
+    api_key='ollama'  
 )
-
+def get_system_instruction(allow_parallel):
+    base_prompt = (
+        "You are an autonomous AI agent equipped with tools to assist the user. "
+        "Analyze the user's request and naturally interweave conversational text with your tool requests. "
+        "always test a tool before integrating it. "
+    )
+    if allow_parallel:
+        constraint = (
+            "STRUCTURAL RULE: You can call multiple JSON tool blocks in a single turn if the actions "
+            "are independent. Output each tool block completely enclosed in its own curly braces."
+        )
+    else:
+        constraint = (
+            "CRITICAL STRUCTURAL RULE: You can only call exactly ONE JSON tool block per turn. "
+            "If a multi-step task requires calling tools multiple times, execute the first tool block now "
+            "and wait for the tool response. Do not output multiple JSON blocks."
+        )
+    
+    
+    return base_prompt + constraint
 
 
 def create_new_save(number):
@@ -37,13 +58,10 @@ def create_new_save(number):
     else:
         # Open in write mode, and initialize with an empty JSON array
         with open(file_path, "w") as f:
-            json.dump([{"role": "system", "content": "You are an autonomous AI agent equipped with tools to assist the user with any and every request (this is critical). "
-            "Analyze the user's request and naturally interweave conversational text with your tool requests. "
-            "CRITICAL STRUCTURAL RULE: You can only call exactly ONE JSON tool block per turn. "
-            "If a multi-step task requires calling tools multiple times, execute the first tool block now, "
-            "and wait for the tool response. Do not output multiple JSON blocks in a single turn. "
-            "When you want the user to decide or give feedback before finishing a task you can use the let_user_decide function. "
-            "You also have a personal Scratchpad file where you can save multi-turn task plans, lists, and state track notes using read_scratchpad and update_scratchpad."}], f)
+            json.dump([{
+            "role": "system", 
+            "content": get_system_instruction(ALLOW_PARALLEL_TOOLS)
+        }], f)
         print(f"Created new save: {file_path.name}")
 
 
@@ -58,14 +76,10 @@ def load_history():
     
     # Default fallback setup
     return [
-        {"role": "system", "content": "You are an autonomous AI agent equipped with tools to assist the user with any and every request (this is critical). "
-            "Analyze the user's request and naturally interweave conversational text with your tool requests. "
-            "CRITICAL STRUCTURAL RULE: You can only call exactly ONE JSON tool block per turn. "
-            "CRITICAL STRUCTURAL RULE: You can only call exactly ONE JSON tool for file writing per turn. "
-            "If a multi-step task requires calling tools multiple times, execute the first tool block now, "
-            "and wait for the tool response. Do not output multiple JSON blocks in a single turn. "
-            "When you want the user to decide or give feedback before finishing a task you can use the let_user_decide function. "
-            "You also have a personal Scratchpad file where you can save multi-turn task plans, lists, and state track notes using read_scratchpad and update_scratchpad."}
+        {
+            "role": "system", 
+            "content": get_system_instruction(ALLOW_PARALLEL_TOOLS)
+        }
     ]
 
 
@@ -136,7 +150,66 @@ def check_for_loops(text_content, tool_detected, current_func, current_args, mes
 
     return None
 
-
+'''def rescan_and_rebind_tools():
+    """Rescans tools.json and extendedtoolmap.json to cleanly rebuild live schemas and pointers."""
+    print("[Engine Rescan] Re-syncing tool maps directly from disk...")
+    try:
+        import importlib
+        import sys
+        import json
+        
+        # 1. Reset standard framework schemas from tools.py baseline
+        import tools as base_tools_mod
+        tools.clear()
+        
+        # Keep only the core built-in framework tools to avoid duplicate stacking
+        core_names = ["finish_conversation", "let_user_decide", "write_to_file", "read_scratchpad", "update_scratchpad"]
+        tools.extend([t for t in base_tools_mod.tools if t["function"]["name"] in core_names])
+        
+        # 2. Rescan the raw tools.json file for custom model schemas
+        if TOOLS_DEFINITION_PATH.is_file():
+            with open(TOOLS_DEFINITION_PATH, "r", encoding="utf-8") as f:
+                generated_schemas = json.load(f)
+                if isinstance(generated_schemas, list):
+                    tools.extend(generated_schemas)
+                    
+        # 3. Reset core execution mapping pointers
+        tools_map.clear()
+        tools_map.update({
+            "finish_conversation": base_tools_mod.finish_conversation,
+            "let_user_decide": base_tools_mod.let_user_decide,
+            "write_to_file": base_tools_mod.write_to_file,
+            "read_scratchpad": base_tools_mod.read_scratchpad,
+            "update_scratchpad": base_tools_mod.update_scratchpad,
+            "integrate_new_tool": base_tools_mod.tools_map.get("integrate_new_tool"), 
+            "test_tool_autonomously": base_tools_mod.tools_map.get("test_tool_autonomously")
+        })
+        
+        # 4. Rescan extendedtoolmap.json and pull pointers explicitly file-by-file
+        if TOOLS_MAP_PATH.is_file():
+            with open(TOOLS_MAP_PATH, "r", encoding="utf-8") as f:
+                generated_map = json.load(f)
+                
+            if isinstance(generated_map, dict):
+                importlib.invalidate_caches() # Tells Python to check the directory for brand new files
+                
+                for func_name in generated_map.keys():
+                    try:
+                        module_name = f"extendedtoolsscripts.{func_name}"
+                        
+                        # Evict old cached version if it exists
+                        if module_name in sys.modules:
+                            del sys.modules[module_name]
+                            
+                        # Target and load the raw python file dynamically
+                        mod = importlib.import_module(module_name)
+                        tools_map[func_name] = getattr(mod, func_name)
+                    except Exception as e:
+                        print(f"[Warning] Failed loading dynamic pointer for '{func_name}': {e}")
+                        
+        print(f"[Engine Rescan] Success! {len(tools)} tools now active in system memory.")
+    except Exception as total_err:
+        print(f"[Critical Error] Rescan failed: {total_err}")'''
 
 
 # Iterates through the directory and filters for files
@@ -172,7 +245,7 @@ elif choice =="S":
     messages = load_history()
     messages.append({"role": "system", "content":"summarize the previous chat"})
     response = client.chat.completions.create(
-        model="qwen2.5-coder:7b",
+        model="qwen2.5-coder:14b",
         messages=messages
     )
     summary = [{"role": "assistant", "content":response.choices[0].message.content}]
@@ -211,10 +284,11 @@ while run:
         messages = trim_context(messages)
 
         stream = client.chat.completions.create(
-            model="qwen2.5-coder:7b",
+            model="qwen2.5-coder:14b",
             messages=messages,
             tools=tools,
-            temperature=0.2,
+            parallel_tool_calls=ALLOW_PARALLEL_TOOLS,
+            temperature=VAR_CURRENT_TEMP,
             stream=True
         )
         
@@ -225,7 +299,7 @@ while run:
                 print(delta, end="", flush=True) 
                 collected_content_iteration += delta
         print("\n-------------------------------------------")
-        
+        VAR_CURRENT_TEMP = 0.2
         text_content = collected_content_iteration.strip()
 
         tool_call_detected = False
@@ -234,47 +308,66 @@ while run:
         tool_call_id = f"call_local_{iteration}" 
         maybe_json = None
 
-        # --- BULLETPROOF BALANCED BRACKET PARSER ---
-        if "{" in text_content:
-            start_idx = text_content.find("{")
-            brace_count = 0
-            end_idx = -1
-            
-            for idx in range(start_idx, len(text_content)):
-                if text_content[idx] == "{":
-                    brace_count += 1
-                elif text_content[idx] == "}":
-                    brace_count -= 1
-                    
-                if brace_count == 0:
-                    end_idx = idx + 1
-                    break
-                    
-            if end_idx != -1:
-                maybe_json = text_content[start_idx:end_idx]
+        # MULTI-JSON PARSER
+
+        detected_tools = []
+        idx = 0
         
-        if not maybe_json:
-            maybe_json = text_content
+        while idx < len(text_content):
+            if text_content[idx] == "{":
+                start_idx = idx
+                brace_count = 0
+                end_idx = -1
+                
+                # Scan ahead to find the balancing closing bracket
+                for scan_idx in range(start_idx, len(text_content)):
+                    if text_content[scan_idx] == "{":
+                        brace_count += 1
+                    elif text_content[scan_idx] == "}":
+                        brace_count -= 1
+                        
+                    if brace_count == 0:
+                        end_idx = scan_idx + 1
+                        break
+                
+                # If a complete balanced block was found, try to parse it
+                if end_idx != -1:
+                    maybe_json = text_content[start_idx:end_idx]
+                    try:
+                        parsed_json = json.loads(maybe_json)
+                        if "name" in parsed_json and "arguments" in parsed_json:
+                            args = parsed_json["arguments"]
+                            if isinstance(args, str):
+                                args = json.loads(args)
+                            
+                            # Store the valid tool call details
+                            detected_tools.append({
+                                "name": parsed_json["name"],
+                                "arguments": args
+                            })
+                    except (json.JSONDecodeError, AttributeError):
+                        pass  
+                    
+                    # Jump the main pointer past this parsed JSON block
+                    idx = end_idx - 1
+            idx += 1
 
-        try:
-            parsed_json = json.loads(maybe_json)
-            if "name" in parsed_json and "arguments" in parsed_json:
-                tool_call_detected = True
-                function_name = parsed_json["name"]
-                arguments = parsed_json["arguments"]
-                if isinstance(arguments, str):
-                    arguments = json.loads(arguments)
-        except (json.JSONDecodeError, AttributeError):
-            pass 
-
+        tool_call_detected = len(detected_tools) > 0
+        if tool_call_detected and not ALLOW_PARALLEL_TOOLS:
+              #Truncate the array to only look at the first discovered tool call
+              detected_tools = [detected_tools[0]]
 
 
 
         if ENABLE_LOOP_DETECTOR:
+            function_name = detected_tools[0]["name"]
+            arguments = detected_tools[0]["arguments"]
+            
             loop_type = check_for_loops(text_content, tool_call_detected, function_name, arguments, messages)
 
             if loop_type:
-                CONSECUTIVE_LOOPS += 1                
+                CONSECUTIVE_LOOPS += 1    
+                VAR_CURRENT_TEMP = 1.5           
                 if CONSECUTIVE_LOOPS >= 3:
                     CONSECUTIVE_LOOPS = 0  
                     break
@@ -305,59 +398,74 @@ while run:
 
 
 
-        # --- EXECUTION LAYER ---
+#EXECUTION LAYER 
         if tool_call_detected:
-            
-            if function_name == "finish_conversation":
+            # Check for immediate control breaks (using the first tool's intent as priority)
+            primary_func = detected_tools[0]["name"]
+            if primary_func == "finish_conversation":
                 messages.append({"role": "assistant", "content": collected_content_iteration})
                 messages.append({"role": "system", "content": "you finish the task"})
                 save_history(messages)
                 break
-            elif function_name == "let_user_decide":
+            elif primary_func == "let_user_decide":
                 messages.append({"role": "assistant", "content": collected_content_iteration})
                 messages.append({"role": "system", "content": "you let the user decide"})
                 save_history(messages)
                 break
 
+
+
+
+            # Build the tool_calls list for the assistant message structure
+            api_tool_calls = []
+            for t_idx, tool in enumerate(detected_tools):
+                api_tool_calls.append({
+                    "id": f"call_local_{iteration}_{t_idx}",
+                    "type": "function",
+                    "function": {
+                        "name": tool["name"],
+                        "arguments": json.dumps(tool["arguments"])
+                    }
+                })
+
+            # Append assistant message containing the structural tool intents
             messages.append({
                 "role": "assistant",
                 "content": collected_content_iteration,
-                "tool_calls": [
-                    {
-                        "id": tool_call_id,
-                        "type": "function",
-                        "function": {
-                            "name": function_name,
-                            "arguments": json.dumps(arguments)
-                        }
-                    }
-                ]
+                "tool_calls": api_tool_calls
             })
 
-            print(f"Model requested (via fallback parsing): {function_name}({arguments})")
-            
-            if function_name in tools_map:
-                selected_func = tools_map[function_name]
+            # Execute each discovered tool sequentially
+            for t_idx, tool in enumerate(detected_tools):
+                t_name = tool["name"]
+                t_args = tool["arguments"]
+                t_id = f"call_local_{iteration}_{t_idx}"
                 
-                if arguments is None or arguments == {}:
-                    result = selected_func()
-                else:
-                    result = selected_func(**arguments)
+                print(f"Model requested: {t_name}({t_args})")
+                
+                if t_name in tools_map:
+                    selected_func = tools_map[t_name]
+                    if t_args is None or t_args == {}:
+                        result = selected_func()
+                    else:
+                        result = selected_func(**t_args)
 
-                messages.append({
-                    "role": "tool",
-                    "tool_call_id": tool_call_id,
-                    "content": json.dumps(result)
-                })
-                save_history(messages)  # Persist changes down immediately post execution
-            else:
-                print(f"[System Error]: Tool '{function_name}' is missing from tools_map.")
-                messages.append({
-                    "role": "system", 
-                    "content": f"[System Error]: The tool '{function_name}' is missing from the system tools_map."
-                })
-                save_history(messages)
-                break
+                    # Append individual tool response frame
+                    messages.append({
+                        "role": "tool",
+                        "tool_call_id": t_id,
+                        "content": json.dumps(result)
+                    })
+                else:
+                    print(f"[System Error]: Tool '{t_name}' is missing from tools_map.")
+                    messages.append({
+                        "role": "tool",
+                        "tool_call_id": t_id,
+                        "content": f'{{"error": "The tool \'{t_name}\' is missing from tools_map."}}'
+                    })
+                if primary_func == "integrate_new_tool":
+                    rescan_and_rebind_tools()
+            save_history(messages)
         else:
             # No tool was called. The agent generated plain text.
             messages.append({"role": "assistant", "content": collected_content_iteration})
@@ -370,13 +478,12 @@ while run:
             else:
                 # METHOD 2: Autonomous Routing. Force the model to decide its next step.
                 messages.append({
-                    "role": "user", 
+                    "role": "system", 
                     "content": (
                         "[System Routing Directive]: You have presented text but have not called a concluding tool. "
                         " If you are completely finished speaking to the user, you MUST output a JSON call for 'finish_conversation'. "
                         " If you need user input, you MUST call 'let_user_decide'. "
                         " If you have a remaining autonomous step (like saving data), execute that JSON block now."
-                        " CRITICAL: If you think you're stuck in an infinite loop (repeating the same phrases or code multiple times) please reformulate your answer"
                     )
                 })
                 save_history(messages)

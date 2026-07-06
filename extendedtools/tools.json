@@ -1,0 +1,86 @@
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "search_web",
+            "description": "Searches the web for a given query and returns True if successful.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "The search query."
+                    }
+                },
+                "required": [
+                    "query"
+                ]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "execute_pip_command",
+            "description": "Executes a given pip command.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "command": {
+                        "type": "string",
+                        "description": "The pip command to execute."
+                    }
+                },
+                "required": [
+                    "command"
+                ]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "write_text_file",
+            "description": "Writes text to a specified text file.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "file_name": {
+                        "type": "string",
+                        "description": "The name of the text file to write to."
+                    },
+                    "content": {
+                        "type": "string",
+                        "description": "The content to write to the file."
+                    }
+                },
+                "required": [
+                    "file_name",
+                    "content"
+                ]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "multiply",
+            "description": "Multiplies two numbers.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "a": {
+                        "type": "number"
+                    },
+                    "b": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "a",
+                    "b"
+                ]
+            }
+        }
+    }
+]

@@ -1,4 +1,7 @@
 from pathlib import Path
+import os
+
+import re
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 

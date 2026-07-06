@@ -1,7 +1,31 @@
 from products import get_product_info, list_all_products, funny_function
 from fileManager import write_to_file
-from mainToolsScript import *
+
 from scratchpad import *
+import sys
+
+
+
+
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+EXTENDED_TOOLS_DIR = ROOT_DIR / "extendedtools"
+if str(EXTENDED_TOOLS_DIR) not in sys.path:
+    sys.path.append(str(EXTENDED_TOOLS_DIR))
+
+
+
+
+USE_EXTENDED_TOOLS = True
+
+
+
+
+def finish_conversation():
+    return "done"
+
+def let_user_decide():
+    return "done"
 
 tools_map = {
     "finish_conversation": finish_conversation,
@@ -71,4 +95,34 @@ tools = [
         }
     }
 ]
+
+if USE_EXTENDED_TOOLS:
+    try:
+        
+        from extendedTools import (
+            integrate_new_tool, 
+            test_tool_autonomously,
+            extended_tools_schemas, 
+            extended_tools_map
+        )
+        try:
+            from extendedtoolsscripts import *
+        except ImportError:
+            print(" 'scripts' directory package is empty or initialization failed.")
+        
+        tools_map["integrate_new_tool"] = integrate_new_tool
+        tools_map["test_tool_autonomously"] = test_tool_autonomously
+        
+        
+        if isinstance(extended_tools_schemas, list) and len(extended_tools_schemas) > 0:
+            tools.extend(extended_tools_schemas)
+            
+        
+        if isinstance(extended_tools_map, dict):
+            for func_name in extended_tools_map.keys():
+                if func_name in globals():
+                    tools_map[func_name] = globals()[func_name]
+                    
+    except ImportError as e:
+        print(f"[Warning] Could not load autonomous engine: {e}")
 

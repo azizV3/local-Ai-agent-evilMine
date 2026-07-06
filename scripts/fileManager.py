@@ -13,6 +13,7 @@ def write_to_file(file_name, content):
         target_path = BASE_DIR1 / Path(file_name).name
 
         with open(target_path, "w", encoding="utf-8") as file:
+            content = content.replace('\\n', '\n').replace('\\"', '"')
             file.write(content)
         return f"sucess"
     except Exception as e:

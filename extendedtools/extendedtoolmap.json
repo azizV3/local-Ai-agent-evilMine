@@ -1,0 +1,6 @@
+{
+    "search_web": "search_web",
+    "execute_pip_command": "execute_pip_command",
+    "write_text_file": "write_text_file",
+    "multiply": "multiply"
+}
