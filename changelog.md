@@ -1,6 +1,6 @@
 # Changelog
 
-Format loosely follows [Keep a Changelog](https://keepachangelog.com).
+
 
 ## [0.2.0] - 2026-08-07
 

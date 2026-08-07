@@ -1,10 +1,10 @@
 # Autonomous Agent Workspace
 
-A local, multi-purpose AI agent framework, soon to be cybersecurity agent. A FastAPI backend drives a local LLM (via Ollama) through a multi-step tool-calling loop, with a React + Electron desktop interface for managing sessions and watching the agent work in real time.
+A local, multipurpose AI agent framework. A FastAPI backend drives a local LLM (via Ollama) through a multi-step tool-calling loop, with a React + Electron desktop interface for managing sessions and watching the agent work in real time.
 
 ## What it does
 
-- Runs an autonomous agent loop that can call tools, read/write files, and as a core feature write and integrate new tools for itself at runtime.
+- Runs an autonomous agent loop that can call tools, read/write files, and — as a core feature — write and integrate new tools for itself at runtime.
 - Streams the agent's thinking, tool calls, and results live to a desktop UI.
 - Saves and reloads conversation sessions as JSON files, so you can pick up a project where you left off.
 - Indexes a local project directory so the agent can browse and search your codebase.
@@ -26,7 +26,7 @@ A local, multi-purpose AI agent framework, soon to be cybersecurity agent. A Fas
 - Ollama, served through an OpenAI-compatible endpoint (`qwen2.5-coder:14b` by default)
 
 **Dev tooling**
-- `concurrently`  runs the frontend, Electron, and backend together via `npm run dev:desktop`
+- `concurrently` — runs the frontend, Electron, and backend together via `npm run dev:desktop`
 
 ## How it works
 
@@ -36,16 +36,38 @@ A local, multi-purpose AI agent framework, soon to be cybersecurity agent. A Fas
 4. A loop guard watches for repeated text or repeated tool calls and nudges the model (via a temperature bump and a system warning) to break the pattern.
 5. Context is trimmed once the conversation approaches a token budget, dropping the oldest turns first while keeping tool call/response pairs intact.
 
+## Getting started
+
+```bash
+# Backend
+python server.py            # starts FastAPI on localhost:8000
+
+# Frontend + Electron
+npm run dev:desktop         # boots Vite, Electron, and the backend together
+```
+
 Requires Ollama running locally with the target model pulled (`qwen2.5-coder:14b` by default).
 
+## Project structure
+
+```
+Mine.py               # AsyncAgentManager — the core turn loop
+server.py             # FastAPI app: sessions, WebSocket, directory indexing
+tools.py              # base tool registry + dynamic tool discovery
+extendedTools.py      # self-extension: test and integrate new tools at runtime
+fileManager.py        # file read/write tools
+filereadtools.py      # project directory indexing/search
+dashboard.jsx         # React UI
+main.js / preload.js  # Electron shell + native folder picker
+```
 
 ## Known limitations
 
 This is an active work in progress. A few things worth knowing before extending it further:
 
-- Tool execution and dynamic code integration aren't sandboxed  treat this as trusted-local-use only.
+- Tool execution and dynamic code integration aren't sandboxed — treat this as trusted-local-use only.
 - File read/write tools aren't contained to a project root, so a misbehaving tool call can touch any file the process can reach.
-- No authentication, and CORS defaults to permissive don't expose the server beyond localhost as-is.
+- No authentication, and CORS defaults to permissive — don't expose the server beyond localhost as-is.
 - Sessions are single-user/single-connection; there's no per-session isolation yet.
 
 See `CHANGELOG.md` for what's shipped so far.
