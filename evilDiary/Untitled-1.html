@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OSU Clone</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #333;
+        }
+        canvas {
+            border: 1px solid white;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <button id="startButton">Start Game</button>
+    <button id="pauseButton">Pause Game</button>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let isGameRunning = false;
+        let circles = [];
+        let sliders = [];
+        let score = 0;
+
+        function drawCircle(x, y, radius) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+        }
+
+        function drawSlider(startX, startY, endX, endY, width) {
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(endX, endY);
+            ctx.lineWidth = width;
+            ctx.strokeStyle = 'white';
+            ctx.stroke();
+        }
+
+        function update() {
+            if (!isGameRunning) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw circles
+            for (let i = 0; i < circles.length; i++) {
+                let circle = circles[i];
+                drawCircle(circle.x, circle.y, circle.radius);
+
+                // Move the circle down
+                circle.y += 2;
+
+                // Check if the circle is out of bounds
+                if (circle.y > canvas.height) {
+                    circles.splice(i, 1);
+                    i--;
+                }
+            }
+
+            // Draw sliders
+            for (let i = 0; i < sliders.length; i++) {
+                let slider = sliders[i];
+                drawSlider(slider.startX, slider.startY, slider.endX, slider.endY, slider.width);
+
+                // Move the slider down
+                slider.startY += 2;
+                slider.endY += 2;
+
+                // Check if the slider is out of bounds
+                if (slider.startY > canvas.height) {
+                    sliders.splice(i, 1);
+                    i--;
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        function startGame() {
+            isGameRunning = true;
+            score = 0;
+            circles = [];
+            sliders = [];
+            update();
+        }
+
+        function pauseGame() {
+            isGameRunning = false;
+        }
+
+        document.getElementById('startButton').addEventListener('click', startGame);
+        document.getElementById('pauseButton').addEventListener('click', pauseGame);
+
+        canvas.addEventListener('click', function(event) {
+            if (!isGameRunning) return;
+
+            let rect = canvas.getBoundingClientRect();
+            let x = event.clientX - rect.left;
+            let y = event.clientY - rect.top;
+
+            // Check for clicks on circles
+            for (let i = 0; i < circles.length; i++) {
+                let circle = circles[i];
+                let distance = Math.sqrt((x - circle.x) ** 2 + (y - circle.y) ** 2);
+
+                if (distance <= circle.radius) {
+                    score++;
+                    console.log('Score:', score);
+                    circles.splice(i, 1);
+                    i--;
+                }
+            }
+
+            // Check for clicks on sliders
+            for (let i = 0; i < sliders.length; i++) {
+                let slider = sliders[i];
+                let dx = x - slider.startX;
+                let dy = y - slider.startY;
+                let length = Math.sqrt((slider.endX - slider.startX) ** 2 + (slider.endY - slider.startY) ** 2);
+                let dot = (dx * (slider.endX - slider.startX) + dy * (slider.endY - slider.startY)) / (length ** 2);
+
+                if (dot >= 0 && dot <= 1) {
+                    let closestX = slider.startX + dot * (slider.endX - slider.startX);
+                    let closestY = slider.startY + dot * (slider.endY - slider.startY);
+                    let distance = Math.sqrt((x - closestX) ** 2 + (y - closestY) ** 2);
+
+                    if (distance <= slider.width / 2) {
+                        score++;
+                        console.log('Score:', score);
+                        sliders.splice(i, 1);
+                        i--;
+                    }
+                }
+            }
+        });
+
+        // Generate circles and sliders at random positions
+        setInterval(function() {
+            if (!isGameRunning) return;
+
+            let x = Math.random() * canvas.width;
+            let y = -50; // Start above the canvas
+            let radius = 20;
+            circles.push({x, y, radius});
+
+            let startX = Math.random() * canvas.width;
+            let startY = -50;
+            let endX = Math.random() * canvas.width;
+            let endY = -50 + (Math.random() * 100);
+            let width = 10;
+            sliders.push({startX, startY, endX, endY, width});
+        }, 1000);
+    </script>
+</body>
+</html>

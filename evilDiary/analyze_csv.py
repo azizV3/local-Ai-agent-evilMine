@@ -1,0 +1,4 @@
+import pandas as pd\n\ndef analyze_csv(file_path):\n    # Read the CSV file into a DataFrame\n    df = pd.read_csv(file_path)\n    \n    # Perform basic analysis\n    summary_stats = df.describe()\n    mean_values = df.mean()\n    max_values = df.max()\n    min_values = df.min()\n    \n    # Output the results\n    print("Summary Statistics:")\n    print(summary_stats)\n    print("
+Mean Values:")\n    print(mean_values)\n    print("
+Max Values:")\n    print(max_values)\n    print("
+Min Values:")\n    print(min_values)\n\n# Example usage\nfile_path = 'example.csv'  # Replace with the path to your CSV file\nanalyze_csv(file_path)

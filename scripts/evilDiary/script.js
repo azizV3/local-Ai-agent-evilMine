@@ -1,0 +1,1 @@
+console.log('Simple Full Stack Web App is running!');

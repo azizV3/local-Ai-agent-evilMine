@@ -1,0 +1,261 @@
+<tool_response>
+{
+  "Abstract": "",
+  "AbstractSource": "Wikipedia",
+  "AbstractText": "",
+  "AbstractURL": "https://en.wikipedia.org/wiki/Jelly",
+  "Answer": "",
+  "AnswerType": "",
+  "Definition": "",
+  "DefinitionSource": "",
+  "DefinitionURL": "",
+  "Entity": "",
+  "Heading": "Jelly",
+  "Image": "",
+  "ImageHeight": 0,
+  "ImageIsLogo": 0,
+  "ImageWidth": 0,
+  "Infobox": "",
+  "Redirect": "",
+  "RelatedTopics": [
+    {
+      "FirstURL": "https://duckduckgo.com/Jellyfish",
+      "Icon": {
+        "Height": "",
+        "URL": "/i/f01cd33e.jpg",
+        "Width": ""
+      },
+      "Result": "<a href="https://duckduckgo.com/Jellyfish">Jellyfish</a>The medusa-phase of certain gelatinous members of the subphylum Medusozoa, which is a major part...",
+      "Text": "Jellyfish The medusa-phase of certain gelatinous members of the subphylum Medusozoa, which is a major part..."
+    },
+    {
+      "FirstURL": "https://duckduckgo.com/Petroleum_jelly",
+      "Icon": {
+        "Height": "",
+        "URL": "/i/35325c50.jpg",
+        "Width": ""
+      },
+      "Result": "<a href="https://duckduckgo.com/Petroleum_jelly">Petroleum jelly</a>A semi-solid mixture of hydrocarbons, originally promoted as a topical ointment for its healing...",
+      "Text": "Petroleum jelly A semi-solid mixture of hydrocarbons, originally promoted as a topical ointment for its healing..."
+    },
+    {
+      "Name": "Food",
+      "Topics": [
+        {
+          "FirstURL": "https://duckduckgo.com/Jelly_(fruit_preserves)",
+          "Icon": {
+            "Height": "",
+            "URL": "",
+            "Width": ""
+          },
+          "Result": "<a href="https://duckduckgo.com/Jelly_(fruit_preserves)">Jelly (fruit preserves)</a> A clear or translucent fruit spread or preserve.",
+          "Text": "Jelly (fruit preserves) A clear or translucent fruit spread or preserve."
+        },
+        {
+          "FirstURL": "https://duckduckgo.com/Gelatin_dessert",
+          "Icon": {
+            "Height": "",
+            "URL": "/i/b3336510.jpg",
+            "Width": ""
+          },
+          "Result": "<a href="https://duckduckgo.com/Gelatin_dessert">Jelly (dessert)</a>Gelatin desserts are desserts made with a sweetened and flavoured processed collagen product...",
+          "Text": "Jelly (dessert) Gelatin desserts are desserts made with a sweetened and flavoured processed collagen product..."
+        }
+      ]
+    },
+    {
+      "Name": "Entertainment",
+      "Topics": [
+        {
+          "FirstURL": "https://duckduckgo.com/Jelly's_Last_Jam",
+          "Icon": {
+            "Height": "",
+            "URL": "/i/75194aa6.jpg",
+            "Width": ""
+          },
+          "Result": "<a href="https://duckduckgo.com/Jelly's_Last_Jam">Jelly's Last Jam</a> A musical with a book by George C. Wolfe, lyrics by Susan Birkenhead, and music by Jelly Roll...",
+          "Text": "Jelly's Last Jam A musical with a book by George C. Wolfe, lyrics by Susan Birkenhead, and music by Jelly Roll..."
+        },
+        {
+          "FirstURL": "https://duckduckgo.com/C._J._Wildheart",
+          "Icon": {
+            "Height": "",
+            "URL": "",
+            "Width": ""
+          },
+          "Result": "<a href="https://duckduckgo.com/C._J._Wildheart">The Jellys</a>Christopher Paul Persaud-Jagdhar, known professionally as C. J. Wildheart, is an English musician...",
+          "Text": "The Jellys Christopher Paul Persaud-Jagdhar, known professionally as C. J. Wildheart, is an English musician..."
+        },
+        {
+          "FirstURL": "https://duckduckgo.com/Jelly_(song)",
+          "Icon": {
+            "Height": "",
+            "URL": "/i/238734f8.jpg",
+            "Width": ""
+          },
+          "Result": "<a href="https://duckduckgo.com/Jelly_(song)">"Jelly" (song)</a>The sixth analog single by Japanese electronica band Capsule.",
+          "Text": ""Jelly" (song) The sixth analog single by Japanese electronica band Capsule."
+        },
+        {
+          "FirstURL": "https://duckduckgo.com/The_Jellies!",
+          "Icon": {
+            "Height": "",
+            "URL": "",
+            "Width": ""
+          },
+          "Result": "<a href="https://duckduckgo.com/The_Jellies!">The Jellies!</a> The Jellies! is an American adult animated sitcom created by Tyler, the Creator and Lionel...",
+          "Text": "The Jellies! The Jellies! is an American adult animated sitcom created by Tyler, the Creator and Lionel..."
+        },
+        {
+          "FirstURL": "https://duckduckgo.com/Shadowmoor",
+          "Icon": {
+            "Height": "",
+            "URL": "/i/e8a710ba.png",
+            "Width": ""
+          },
+          "Result": "<a href="https://duckduckgo.com/Shadowmoor">Shadowmoor</a>A Magic: The Gathering block consisting of the expansion sets Shadowmoor and Eventide.",
+          "Text": "Shadowmoor A Magic: The Gathering block consisting of the expansion sets Shadowmoor and Eventide."
+        }
+      ]
+    },
+    {
+      "Name": "Other uses",
+      "Topics": [
+        {
+          "FirstURL": "https://duckduckgo.com/Gelignite",
+          "Icon": {
+            "Height": "",
+            "URL": "",
+            "Width": ""
+          },
+          "Result": "<a href="https://duckduckgo.com/Gelignite">Gelignite</a>An explosive material consisting of collodion-cotton dissolved in either nitroglycerine or...",
+          "Text": "Gelignite An explosive material consisting of collodion-cotton dissolved in either nitroglycerine or..."
+        },
+        {
+          "FirstURL": "https://duckduckgo.com/Temazepam",
+          "Icon": {
+            "Height": "",
+            "URL": "/i/481f4c0d.png",
+            "Width": ""
+          },
+          "Result": "<a href="https://duckduckgo.com/Temazepam">Temazepam</a>A medication of the benzodiazepine class which is generally used to treat severe or debilitating...",
+          "Text": "Temazepam A medication of the benzodiazepine class which is generally used to treat severe or debilitating..."
+        },
+        {
+          "FirstURL": "https://duckduckgo.com/Apache_Jelly",
+          "Icon": {
+            "Height": 16,
+            "URL": "/i/commons.apache.org.ico",
+            "Width": 16
+          },
+          "Result": "<a href="https://duckduckgo.com/Apache_Jelly">Apache Jelly</a>A Java and XML based scripting and processing engine for turning XML into executable code.",
+          "Text": "Apache Jelly A Java and XML based scripting and processing engine for turning XML into executable code."
+        },
+        {
+          "FirstURL": "https://duckduckgo.com/Petroleum_jelly",
+          "Icon": {
+            "Height": "",
+            "URL": "/i/35325c50.jpg",
+            "Width": ""
+          },
+          "Result": "<a href="https://duckduckgo.com/Petroleum_jelly">Petroleum jelly</a>A semi-solid mixture of hydrocarbons, originally promoted as a topical ointment for its healing...",
+          "Text": "Petroleum jelly A semi-solid mixture of hydrocarbons, originally promoted as a topical ointment for its healing..."
+        },
+        {
+          "FirstURL": "https://duckduckgo.com/Jelly_(app)",
+          "Icon": {
+            "Height": "",
+            "URL": "",
+            "Width": ""
+          },
+          "Result": "<a href="https://duckduckgo.com/Jelly_(app)">Jelly (app)</a>A Q&A platform app which was created by Jelly Industries, a search-engine company founded and led...",
+          "Text": "Jelly (app) A Q&A platform app which was created by Jelly Industries, a search-engine company founded and led..."
+        }
+      ]
+    },
+    {
+      "Name": "See also",
+      "Topics": [
+        {
+          "FirstURL": "https://duckduckgo.com/Jelli",
+          "Icon": {
+            "Height": "",
+            "URL": "/i/2fd1dc30.jpg",
+            "Width": ""
+          },
+          "Result": "<a href="https://duckduckgo.com/Jelli">Jelli</a>A San Mateo, California-based advertising technology firm, which develops solutions for the...",
+          "Text": "Jelli A San Mateo, California-based advertising technology firm, which develops solutions for the..."
+        },
+        {
+          "FirstURL": "https://duckduckgo.com/d/Jelly_(name)",
+          "Icon": {
+            "Height": "",
+            "URL": "",
+            "Width": ""
+          },
+          "Result": "<a href="https://duckduckgo.com/d/Jelly_(name)">Jelly (name)</a> A list of people with the nickname or surname.",
+          "Text": "Jelly (name) A list of people with the nickname or surname."
+        }
+      ]
+    }
+  ],
+  "Results": [],
+  "Type": "D",
+  "meta": {
+    "attribution": null,
+    "blockgroup": null,
+    "created_date": null,
+    "description": "Wikipedia",
+    "designer": null,
+    "dev_date": null,
+    "dev_milestone": "live",
+    "developer": [
+      {
+        "name": "DDG Team",
+        "type": "ddg",
+        "url": "http://www.duckduckhack.com"
+      }
+    ],
+    "example_query": "nikola tesla",
+    "id": "wikipedia_fathead",
+    "is_stackexchange": null,
+    "js_callback_name": "wikipedia",
+    "live_date": null,
+    "maintainer": {
+      "github": "duckduckgo"
+    },
+    "name": "Wikipedia",
+    "perl_module": "DDG::Fathead::Wikipedia",
+    "producer": null,
+    "production_state": "online",
+    "repo": "fathead",
+    "signal_from": "wikipedia_fathead",
+    "src_domain": "en.wikipedia.org",
+    "src_id": 1,
+    "src_name": "Wikipedia",
+    "src_options": {
+      "directory": "",
+      "is_fanon": 0,
+      "is_mediawiki": 1,
+      "is_wikipedia": 1,
+      "language": "en",
+      "min_abstract_length": "20",
+      "skip_abstract": 0,
+      "skip_abstract_paren": 0,
+      "skip_end": "0",
+      "skip_icon": 0,
+      "skip_image_name": 0,
+      "skip_qr": "",
+      "source_skip": "",
+      "src_info": ""
+    },
+    "src_url": null,
+    "status": "live",
+    "tab": "About",
+    "topic": [
+      "productivity"
+    ],
+    "unsafe": 0
+  }
+}
+</tool_response>

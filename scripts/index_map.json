@@ -1,0 +1,21 @@
+{
+  "directory_root": "D:\\aiproject\\projects",
+  "subdirectories": [
+    "project 1",
+    "project 1\\scripts"
+  ],
+  "files": [
+    {
+      "relative_path": "project 1\\c.txt",
+      "extension": ".txt",
+      "size_kb": 0.02,
+      "preview": "can you find me"
+    },
+    {
+      "relative_path": "project 1\\scripts\\New Text Document.txt",
+      "extension": ".txt",
+      "size_kb": 0.0,
+      "preview": "hi"
+    }
+  ]
+}

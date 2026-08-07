@@ -9,6 +9,7 @@ SAVE_DIR = PROJECT_ROOT / "saves"
 HISTORY_FILE = PROJECT_ROOT / "chat_history.json"
 SCRATCHPAD_FILE = PROJECT_ROOT / "scratchpad.txt"
 
+
 def read_scratchpad():
     """Reads current multi-step agent notes from scratchpad text file."""
     if not os.path.exists(SCRATCHPAD_FILE):

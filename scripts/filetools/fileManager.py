@@ -10,7 +10,7 @@ BASE_DIR1.mkdir(parents=True, exist_ok=True) #so it dosent crash
 
 def write_to_file(file_name, content):
     try:
-        target_path = BASE_DIR1 / Path(file_name).name
+        target_path = file_name
 
         with open(target_path, "w", encoding="utf-8") as file:
             content = content.replace('\\n', '\n').replace('\\"', '"')
@@ -18,10 +18,6 @@ def write_to_file(file_name, content):
         return f"sucess"
     except Exception as e:
         return f"[System Error]: Failed to write file '{file_name}'. Reason: {str(e)}"
-
-
-
-
 
 
 def read_file(filename):

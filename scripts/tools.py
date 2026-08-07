@@ -1,15 +1,17 @@
-from products import get_product_info, list_all_products, funny_function
-from fileManager import write_to_file
 
-from scratchpad import *
+from filetools.fileManager import write_to_file
+from filetools.filereadtools import search_directory_index
+from scratchpad.scratchpad import *
 import sys
+import json
+from pathlib import Path
 
 
-
-
-
+CURRENT_DIR = Path(__file__).resolve().parent
 ROOT_DIR = Path(__file__).resolve().parent.parent
 EXTENDED_TOOLS_DIR = ROOT_DIR / "extendedtools"
+FILE_TOOLS_DIR = CURRENT_DIR / "filetools"
+SCRATCHPAD_DIR = CURRENT_DIR / "scratchpad"
 if str(EXTENDED_TOOLS_DIR) not in sys.path:
     sys.path.append(str(EXTENDED_TOOLS_DIR))
 
@@ -17,7 +19,8 @@ if str(EXTENDED_TOOLS_DIR) not in sys.path:
 
 
 USE_EXTENDED_TOOLS = True
-
+USE_SCRATCHPAD = True
+USE_FILETOOLS = True
 
 
 
@@ -27,16 +30,10 @@ def finish_conversation():
 def let_user_decide():
     return "done"
 
-tools_map = {
-    "finish_conversation": finish_conversation,
-    "write_to_file": write_to_file,
-    "read_scratchpad": read_scratchpad,
-    "update_scratchpad": update_scratchpad
-    
-}
+
 '''override scratchpad'''
 
-tools = [
+basetools = [
     {
         "type": "function",
         "function": {
@@ -56,45 +53,88 @@ tools = [
     {
         "type": "function",
         "function": {
-            "name": "write_to_file",
-            "description": "this function writes the text to any file format, make sure to get the format correct with the file_name, this is different from the scratchpad because it stores the text files of any format permenantly.",
+            "name": "search_available_tools",
+            "description": "Searches the database of available but inactive tools by keyword. Returns the JSON schemas of tools you can request to use.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "file_name": {"type": "string"},
-                    "content": {"type": "string"}
-                },
-                "required": ["file_name", "content"]
-            }
-        }
-    },
-    # Scratchpad Tool Schema Definitions For Model Awareness
-    {
-        "type": "function",
-        "function": {
-            "name": "read_scratchpad",
-            "description": "Read your long-term planning thoughts, notes, and task progress trackers from the dynamic text file.",
-            "parameters": {"type": "object", "properties": {}}
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "update_scratchpad",
-            "description": "Overwrite the scratchpad text file with completely updated planning notes, workflows, or sub-task checkmarks.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "content": {
+                    "keywords": {
                         "type": "string",
-                        "description": "The entire new structured text content block to write into scratchpad."
+                        "description": "A keyword or comma-separated list of keywords to search for (for writing programs to file use keyword 'file', for scratchpad use keyword 'scratchpad', for searching files or see the current directory use 'index')."
                     }
                 },
-                "required": ["content"]
+                "required": ["keywords"]
             }
         }
     }
 ]
+tools = list(basetools)
+ACTIVE_JSON_SCHEMAS = []
+if USE_FILETOOLS:
+    ACTIVE_JSON_SCHEMAS.append(FILE_TOOLS_DIR / "filetools.json")
+if USE_SCRATCHPAD:
+    ACTIVE_JSON_SCHEMAS.append(SCRATCHPAD_DIR / "scratchpad_tools.json")
+
+
+def search_available_tools(keywords: str) -> str:
+    """
+    Searches the JSON schema files of active integrations for specific keywords.
+    Returns the exact JSON schema definitions of matching tools.
+    """
+    active_json_paths = ACTIVE_JSON_SCHEMAS
+
+        
+    if not active_json_paths:
+        return "No extended integrations are currently enabled to search."
+
+    # Parse keywords (handles a single word or a comma-separated list)
+    search_terms = [k.strip().lower() for k in keywords.split(",") if k.strip()]
+    matched_schemas = []
+
+    # Scan only the JSON files for features that are currently toggled ON
+    for json_path in active_json_paths:
+        if not json_path.exists():
+            continue
+            
+        try:
+            with open(json_path, "r", encoding="utf-8") as f:
+                schemas = json.load(f)
+                
+            if not isinstance(schemas, list):
+                continue
+                
+            for tool in schemas:
+                # Safely extract inner data for string matching
+                func_data = tool.get("function", {})
+                name = func_data.get("name", "").lower()
+                description = func_data.get("description", "").lower()
+                
+                # Flatten parameters to string to catch deeply nested keywords
+                parameters_str = json.dumps(func_data.get("parameters", {})).lower()
+                
+                # If ANY of the search terms are found in this tool, grab it
+                if any(term in name or term in description or term in parameters_str for term in search_terms):
+                    # Prevent duplicates if a tool somehow exists in multiple files
+                    if tool not in matched_schemas:
+                        matched_schemas.append(tool)
+                        
+        except Exception as e:
+            return f"Error reading schema file {json_path.name}: {str(e)}"
+            
+    if not matched_schemas:
+        return f"No tools found matching the keywords: '{keywords}'"
+        
+    return json.dumps(matched_schemas, indent=2)
+
+tools_map = {
+    "finish_conversation": finish_conversation,
+    "write_to_file": write_to_file,
+    "read_scratchpad": read_scratchpad,
+    "update_scratchpad": update_scratchpad,
+    "search_available_tools": search_available_tools,
+    "search_directory_index": search_directory_index
+}
+
 
 if USE_EXTENDED_TOOLS:
     try:

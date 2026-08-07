@@ -1,0 +1,29 @@
+[   
+
+    {
+        "type": "function",
+        "function": {
+            "name": "read_scratchpad",
+            "description": "Read your long-term planning thoughts, notes, and task progress trackers from the dynamic text file.",
+            "parameters": {"type": "object", "properties": {}}
+        }
+    }
+    ,
+    {
+        "type": "function",
+        "function": {
+            "name": "update_scratchpad",
+            "description": "Overwrite the scratchpad text file with completely updated planning notes, workflows, or sub-task checkmarks.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "string",
+                        "description": "The entire new structured text content block to write into scratchpad."
+                    }
+                },
+                "required": ["content"]
+            }
+        }
+    }
+]
