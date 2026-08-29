@@ -4,37 +4,29 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import asyncio
-
 from Mine import AsyncAgentManager, SAVE_DIR, client, ALLOW_PARALLEL_TOOLS
 import tools
-import filetools.fileManager as filemanager
 import filetools.filereadtools as filereadtools
-PROJECT_MODE = False
 
-def get_system_instruction(allow_parallel, projectmode):
+
+def get_system_instruction(allow_parallel):
         base_prompt = (
             "You are an autonomous AI agent equipped with tools to assist the user. "
             "Analyze the user's request and naturally interweave conversational text with your tool requests. "
             "always test a tool before integrating it. "
-            "you are equipped with a multitued of tools [file manipulation, indexing, scratchpad] you will need to use search_available_tools to find out how they work"
         )
         if allow_parallel:
             constraint = (
                 "STRUCTURAL RULE: You can call multiple JSON tool blocks in a single turn if the actions "
                 "are independent. Output each tool block completely enclosed in its own curly braces."
-                "1. TOOL DISCOVERY: Use 'search_available_tools' to find tool schemas before calling them. If no tools match, retry with alternate keywords (e.g., 'file', 'read', 'edit', 'directory')."
-                "2. SCHEMA ADHERENCE: Use EXACT parameter names and types from tool schemas. Do not invent or guess arguments."
-                "3. GROUNDED EXECUTION: Base actions and responses ONLY on actual tool outputs. If a tool fails or crashes, read the error, adjust arguments, and try again. Never invent file content or code snippets."
             )
         else:
             constraint = (
                 "CRITICAL STRUCTURAL RULE: You can only call exactly ONE JSON tool block per turn. "
                 "If a multi-step task requires calling tools multiple times, execute the first tool block now "
                 "and wait for the tool response. Do not output multiple JSON blocks."
-                "1. TOOL DISCOVERY: Use 'search_available_tools' to find tool schemas before calling them. If no tools match, retry with alternate keywords (e.g., 'file', 'read', 'edit', 'directory')."
-                "2. SCHEMA ADHERENCE: Use EXACT parameter names and types from tool schemas. Do not invent or guess arguments."
-                "3. GROUNDED EXECUTION: Base actions and responses ONLY on actual tool outputs. If a tool fails or crashes, read the error, adjust arguments, and try again. Never invent file content or code snippets."
             )
+        
         
         return base_prompt + constraint
 
@@ -77,7 +69,7 @@ class InitConfig(BaseModel):
 
 class DirectoryConfig(BaseModel):
     directory_path: str
-    project_mode: bool = False
+
 @app.get("/saves") 
 def get_available_saves():
     if SAVE_DIR.exists():
@@ -104,7 +96,7 @@ def initialize_save_session(config: InitConfig):
         file_path = SAVE_DIR / f"save{config.value}.json"
         if not file_path.is_file():
             with open(file_path, "w") as f:
-                json.dump([{"role": "system", "content": get_system_instruction(ALLOW_PARALLEL_TOOLS,PROJECT_MODE)}], f)
+                json.dump([{"role": "system", "content": get_system_instruction(ALLOW_PARALLEL_TOOLS)}], f)
         
         manager = AsyncAgentManager(history_file=file_path)
         current_session["manager"] = manager
@@ -145,28 +137,14 @@ def update_session_directory(config: DirectoryConfig):
     if not manager:
         return {"status": "Error: No active session loaded."}
     
-    # swap the workspace path for the AI tools script /// to change !!
+    # Hot-swap the workspace path for the AI tools script
     filereadtools.TARGET_DIRECTORY = config.directory_path
-    filemanager.TARGET_DIRECTORY = config.directory_path
-
-    if config.project_mode:
-        project_instruction = (
-            "PROJECT MODE ACTIVE: You are operating directly within a main project directory workspace. "
-            "When analyzing, modifying, or creating files, you MUST use the indexing tools to navigate "
-            "the project structure and search/manipulation tools to accurately query and edit "
-            "files within the main project directory."
-        )
-        # Inject instruction directly into active conversation history
-        manager.messages.append({"role": "system", "content": project_instruction})
     
-
     # Save it to the active session object for persistence
     if hasattr(manager, "project_directory"):
-        manager.project_mode = config.project_mode
         manager.project_directory = config.directory_path
     filereadtools.search_directory_index(query=None) #indexes the current directory
-    
-    return {"status": f"Workspace directory updated to: {config.directory_path} "}
+    return {"status": f"Workspace directory updated to: {config.directory_path}"}
 
 
 @app.websocket("/ws/agent")
@@ -190,7 +168,7 @@ async def agent_websocket_endpoint(websocket: WebSocket):
                 await websocket.send_json({"type": "tool_result", "data": execution_frame})
 
             #Wrap the turn routine execution block inside the lock
-            async with generation_lock:  # Forces single-file sequential execution 
+            async with generation_lock:  # ◄ Forces single-file sequential execution 
                 await manager.run_turn(
                     user_input=user_input,
                     on_token=token_callback,

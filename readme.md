@@ -36,30 +36,10 @@ A local, multipurpose AI agent framework. A FastAPI backend drives a local LLM (
 4. A loop guard watches for repeated text or repeated tool calls and nudges the model (via a temperature bump and a system warning) to break the pattern.
 5. Context is trimmed once the conversation approaches a token budget, dropping the oldest turns first while keeping tool call/response pairs intact.
 
-## Getting started
-
-```bash
-# Backend
-python server.py            # starts FastAPI on localhost:8000
-
-# Frontend + Electron
-npm run dev:desktop         # boots Vite, Electron, and the backend together
-```
 
 Requires Ollama running locally with the target model pulled (`qwen2.5-coder:14b` by default).
 
-## Project structure
 
-```
-Mine.py               # AsyncAgentManager — the core turn loop
-server.py             # FastAPI app: sessions, WebSocket, directory indexing
-tools.py              # base tool registry + dynamic tool discovery
-extendedTools.py      # self-extension: test and integrate new tools at runtime
-fileManager.py        # file read/write tools
-filereadtools.py      # project directory indexing/search
-dashboard.jsx         # React UI
-main.js / preload.js  # Electron shell + native folder picker
-```
 
 ## Known limitations
 

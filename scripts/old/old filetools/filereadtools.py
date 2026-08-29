@@ -2,7 +2,6 @@ import os
 import json
 from pathlib import Path
 
-
 # Configuration
 TARGET_DIRECTORY = "./my_project"  # The folder you want to index
 INDEX_FILE_PATH = "index_map.json"
@@ -29,7 +28,7 @@ def build_index(directory_path: str) -> dict:
         raise NotADirectoryError(f"The path '{directory_path}' is not a directory.")
 
     index = {
-        "directory_root": f"/{root.name}",
+        "directory_root": str(root.resolve()),
         "subdirectories": [],
         "files": []
     }
@@ -39,8 +38,7 @@ def build_index(directory_path: str) -> dict:
         if should_ignore(path):
             continue
             
-        # Format as /subfolder/file.ext with posix slashes
-        relative_path = f"/{path.relative_to(root).as_posix()}"
+        relative_path = path.relative_to(root)
         
         if path.is_dir():
             index["subdirectories"].append(str(relative_path))
@@ -73,21 +71,19 @@ def search_directory_index(query: str = None) -> str:
     If the index file doesn't exist, it auto-generates it first.
     If the target directory doesn't exist, returns a clean error.
     """
-    # 1. Check if the index needs to be built/rebuilt // TO CHANGE !!!!
-    #if not os.path.exists(INDEX_FILE_PATH):
-    try:
+    # 1. Check if the index needs to be built/rebuilt
+    if not os.path.exists(INDEX_FILE_PATH):
+        try:
             print(f"Index file '{INDEX_FILE_PATH}' not found. Generating now...")
             project_index = build_index(TARGET_DIRECTORY)
             
-            #maybe use getsafepath
-
             with open(INDEX_FILE_PATH, "w", encoding="utf-8") as f:
                 json.dump(project_index, f, indent=2)
             print("Index generated successfully.")
             
-    except (FileNotFoundError, NotADirectoryError) as e:
+        except (FileNotFoundError, NotADirectoryError) as e:
             return f"Error: Cannot build index. {str(e)}"
-    except Exception as e:
+        except Exception as e:
             return f"Error building index: {str(e)}"
 
     # 2. Load the existing index

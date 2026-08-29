@@ -1,0 +1,14 @@
+python -m venv venv
+
+ollama, pull preferred model and replace it in mine.py
+
+pip install fastapi 
+pip install "uvicorn[standard]"
+pip install openai
+pip install pydantic
+
+cd frontend
+
+npm install
+
+npm audit fix

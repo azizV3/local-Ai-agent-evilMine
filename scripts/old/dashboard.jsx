@@ -16,7 +16,7 @@ export default function AgentDashboard() {
   const socketRef = useRef(null);
   const chatBottomRef = useRef(null);
   const [activeDirectory, setActiveDirectory] = useState('./my_project');
-  const [ProjectMode, setProjectMode] = useState(false);
+
   const inputRef = useRef('');
   const streamedRef = useRef('');
   useEffect(() => { inputRef.current = inputMessage; }, [inputMessage]);
@@ -138,11 +138,10 @@ export default function AgentDashboard() {
     const res = await fetch('http://localhost:8000/saves/directory', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ directory_path: chosenPath, project_mode: true})
+      body: JSON.stringify({ directory_path: chosenPath })
     });
     const data = await res.json();
     
-    setProjectMode(true);
     setActiveDirectory(chosenPath);
     setStatusLog(`System: ${data.status}`);
     

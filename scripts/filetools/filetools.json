@@ -17,8 +17,50 @@
     {
   "type": "function",
   "function": {
+    "name": "read_file",
+    "description": "Reads and returns the text contents of a specified file within the active project workspace. Use the exact relative_path string returned by the directory index (e.g., '/text.txt' or '/subfolder/script.py').",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "description": "The relative file path within the project directory to read (e.g., 'logs.txt' or '/subfolder/config.json')."
+        }
+      },
+      "required": ["filename"]
+    }
+  }
+},
+{
+  "type": "function",
+  "function": {
+    "name": "edit_file_content",
+    "description": "Searches for a specific text string inside a file and replaces it with new text within the active project workspace.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "description": "The relative path of the file to edit (e.g., 'script.py' or '/subfolder/data.txt')."
+        },
+        "old_text": {
+          "type": "string",
+          "description": "The exact target string currently inside the file that needs to be replaced."
+        },
+        "new_text": {
+          "type": "string",
+          "description": "The new replacement content string that will overwrite the old_text."
+        }
+      },
+      "required": ["filename", "old_text", "new_text"]
+    }
+  }
+},
+    {
+  "type": "function",
+  "function": {
     "name": "search_directory_index",
-    "description": "Explores, maps, or searches the active workspace directory. Run this tool with NO query (or null) if you are lost, need to understand the project structure, or want to locate files; this returns the entire recursive directory tree, listing all files, subdirectories, and lightweight code preview snippets. If you know what you are looking for, provide a query to filter files and paths by keyword.",
+    "description": "with indexing it Explores, maps, or searches the active workspace directory. Run this tool with NO query (or null) if you are lost, need to understand the project structure, or want to locate files; this returns the entire recursive directory tree, listing all files, subdirectories, and lightweight code preview snippets. If you know what you are looking for, provide a query to filter files and paths by keyword.",
     "parameters": {
       "type": "object",
       "properties": {
@@ -29,6 +71,31 @@
       }
     }
   }
+},
+{
+    "type": "function",
+    "function": {
+        "name": "scan_pattern",
+        "description": "Recursively searches code files using regex grep. Returns matching lines with context lines before and after.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "target_dir": {
+                    "type": "string",
+                    "description": "Directory path to scan (defaults to active project directory)."
+                },
+                "pattern": {
+                    "type": "string",
+                    "description": "Extended regular expression pattern to search for."
+                },
+                "context_lines": {
+                    "type": "integer",
+                    "description": "Number of context lines before and after matches (default 3)."
+                }
+            },
+            "required": ["pattern","target_dir","context_lines"]
+        }
+    }
 }
 
 ]
