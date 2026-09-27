@@ -6,8 +6,23 @@ import importlib
 import re
 from pathlib import Path
 import traceback
-
+from random import randint
 from tools import *
+import sys, ctypes
+
+''' 
+    smtek/Qwen3.8-27B:Q3_K_M 
+    qwen2.5-coder:14b
+    qwen2.5-coder:7b
+
+
+'''
+
+
+'''if sys.platform == "win32":
+    ctypes.windll.kernel32.AllocConsole()
+    sys.stdout = open("CONOUT$", "w")
+    sys.stderr = open("CONOUT$", "w")'''
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -16,13 +31,22 @@ PROJECT_ROOT = SCRIPT_DIR.parent
 SAVE_DIR = PROJECT_ROOT / "saves"
 HISTORY_FILE = PROJECT_ROOT / "chat_history.json"
 SCRATCHPAD_FILE = PROJECT_ROOT / "scratchpad.txt"
-MAX_CONTEXT_TOKENS = 16000
+MAX_CONTEXT_TOKENS = 32000
 ALLOW_PARALLEL_TOOLS = True
 AUTONOMOUS_MODE = True
 ENABLE_LOOP_DETECTOR = True
 CONSECUTIVE_LOOPS = 0
-
+#EDIT_SAFETY_ON = True
 VAR_CURRENT_TEMP = 0.2
+READ_FILE_LIMITER= True
+FILE_LIMIT= 10
+FILE_SIZE_LIMIT = 500
+
+
+QWEN27B_COMPATIBILITY= True
+system_directive_role = "user" if QWEN27B_COMPATIBILITY else "system"
+'''if QWEN27B_COMPATIBILITY:
+    AUTONOMOUS_MODE = False'''
 
 client = AsyncOpenAI(
     base_url='http://localhost:11434/v1/',
@@ -34,6 +58,7 @@ class AsyncAgentManager:
         self.messages = self.load_history()
         self.consecutive_loops = 0
         self.var_current_temp = 0.2
+        self.pending_purge = False
 
 
     """def get_system_instruction(self, allow_parallel):
@@ -85,7 +110,7 @@ class AsyncAgentManager:
 
 
     def estimate_tokens(self, messages):
-        """Approximates total payload tokens based on character count (1 token ≈ 4 characters)."""
+        """Approximates total payload tokens based on character count (1 token = 4 characters)."""
         total_chars = 0
         for msg in messages:
             if "content" in msg and msg["content"]:
@@ -99,25 +124,45 @@ class AsyncAgentManager:
             return messages
 
         system_message = messages[0] if messages[0]["role"] == "system" else None
-        pool = messages[1:] if system_message else messages
+        tempp = messages[1:] if system_message else messages
 
-        while self.estimate_tokens(messages) > max_tokens and len(pool) > 1:
-            # Instead of pop(0), remove items until you clear a full logical turn
+        while self.estimate_tokens(messages) > max_tokens and len(tempp) > 1:
+            # Instead of pop(0), remove items until we clear a full logical turn
             # Ensure we don't leave an orphaned 'tool' or 'assistant' tool_call message
-            pool.pop(0)
+            tempp.pop(0)
 
             # EXTRA GUARDRAIL: Checks for broken assistant text or tool execution layouts
-            while pool and pool[0].get("role") in ["tool", "assistant"] and "tool_calls" not in pool[0]:
-                pool.pop(0)
+            while tempp and tempp[0].get("role") in ["tool", "assistant"] and "tool_calls" not in tempp[0]:
+                tempp.pop(0)
                 
             # Checks for tool blocks whose matching assistant calls were just deleted
-            while pool and pool[0].get("role") == "tool":
-                pool.pop(0)
+            while tempp and tempp[0].get("role") == "tool":
+                tempp.pop(0)
 
-            messages = [system_message] + pool if system_message else pool
+            messages = [system_message] + tempp if system_message else tempp
             
         return messages
+    def purge_file_reads(self, messages):
+        system_message = messages[0] if messages[0]["role"] == "system" else None
+        tempp = messages[1:] if system_message else list(messages)
+        file_ids = {}   
+        for msg in tempp:
+            if msg.get("role") == "assistant" and msg.get("tool_calls"):
+                for call in msg["tool_calls"]:
+                    if call["function"]["name"] == "read_file":
+                     
+                        args = json.loads(call["function"]["arguments"])
+                        filename = args.get("filename", "unknown")
+                        file_ids[call["id"]] = filename
 
+
+        for msg in tempp:
+            if msg.get("role") == "tool" and msg.get("tool_call_id") in file_ids:
+                filename = file_ids[msg["tool_call_id"]]
+                msg["content"] = f"purged: file content removed to free context, re-read if needed. file name: {filename}"
+        return [system_message] + tempp if system_message else tempp
+
+    
     def check_for_loops(self, text_content, tool_detected, current_func, current_args, messages):
         
         #Returns True if the agent is stuck in a text loop or repeating the same tool call.
@@ -129,7 +174,7 @@ class AsyncAgentManager:
 
         
         if tool_detected and messages:
-            # Look at the very last message in history pool
+            # Look at the very last message in history tempp
             last_msg = messages[-1]
             if last_msg.get("role") == "assistant" and "tool_calls" in last_msg:
                 last_call = last_msg["tool_calls"][0]["function"]
@@ -209,8 +254,9 @@ class AsyncAgentManager:
 
 
  
-
+    #+ on_edit/delete to implement
     async def run_turn(self, user_input: str, on_token, on_status, on_tool):
+        files_size = 0
         max_iterations = 30
         iteration = 0
         self.messages.append({"role": "user", "content": user_input})
@@ -220,18 +266,33 @@ class AsyncAgentManager:
 
         while iteration < max_iterations:
             iteration += 1
-            await on_status(f"Turn {iteration}: Thinking Process ")   
-            # Context safety layer check executed prior to executing LLM inferences
+            
+            cute = randint(1, 5)
+            if cute == 1:
+                thinkingmsg = "Thinking >.< "
+            else:
+                thinkingmsg = "Thinking ... "
+            await on_status(f"Turn {iteration}: {thinkingmsg} ")   
             self.messages = self.trim_context(self.messages)
-
-            stream = await client.chat.completions.create(
-                model="qwen2.5-coder:14b",
-                messages=self.messages,
-                tools=basetools,
-                parallel_tool_calls=ALLOW_PARALLEL_TOOLS,
-                temperature=self.var_current_temp,
-                stream=True
-            )
+            #tools=basetools,
+            #smtek/Qwen3.8-27B:Q3_K_M
+            if QWEN27B_COMPATIBILITY:
+                    stream = await client.chat.completions.create(
+                    model="smtek/Qwen3.8-27B:Q3_K_M",
+                    messages=self.messages,
+                    parallel_tool_calls=ALLOW_PARALLEL_TOOLS,
+                    temperature=self.var_current_temp,
+                    stream=True
+                )
+            else:
+                stream = await client.chat.completions.create(
+                    model="qwen2.5-coder:14b",
+                    messages=self.messages,
+                    tools=basetools,
+                    parallel_tool_calls=ALLOW_PARALLEL_TOOLS,
+                    temperature=self.var_current_temp,
+                    stream=True
+                )
             
             print(f"DEBUG: Actual payload:")
             collected_content_iteration = ""
@@ -240,7 +301,10 @@ class AsyncAgentManager:
                 if delta:
                     
                     collected_content_iteration += delta
-                    print(delta)
+                    try:
+                        print(delta)
+                    except UnicodeEncodeError:
+                        print(delta.encode("utf-8", errors="replace").decode("cp1252", errors="replace"))
                     await on_token(delta)
             
             self.var_current_temp = 0.2
@@ -263,7 +327,7 @@ class AsyncAgentManager:
                     brace_count = 0
                     end_idx = -1
                     
-                    # Scan ahead to find the balancing closing bracket
+                    
                     for scan_idx in range(start_idx, len(text_content)):
                         if text_content[scan_idx] == "{":
                             brace_count += 1
@@ -274,31 +338,39 @@ class AsyncAgentManager:
                             end_idx = scan_idx + 1
                             break
                     
-                    # If a complete balanced block was found, try to parse it
+                    
                     if end_idx != -1:
                         maybe_json = text_content[start_idx:end_idx]
                         try:
                             parsed_json = json.loads(maybe_json)
+                            name = None
+                            args = None
+
                             if "name" in parsed_json and "arguments" in parsed_json:
+                                name = parsed_json["name"]
                                 args = parsed_json["arguments"]
+                            elif isinstance(parsed_json.get("function"), dict) and "name" in parsed_json["function"]:
+                                # model emitted a tool-schema shape instead of a call — normalize it
+                                func = parsed_json["function"]
+                                name = func["name"]
+                                args = func.get("parameters", func.get("arguments", {}))
+                            elif "function_name" in parsed_json:
+                                name = parsed_json["function_name"]
+                                args = parsed_json.get("parameters", parsed_json.get("arguments", {}))
+
+                            if name is not None:
                                 if isinstance(args, str):
                                     args = json.loads(args)
-                                
-                                # Store the valid tool call details
-                                detected_tools.append({
-                                    "name": parsed_json["name"],
-                                    "arguments": args
-                                })
+                                detected_tools.append({"name": name, "arguments": args})
                         except (json.JSONDecodeError, AttributeError):
                             pass  
                         
-                        # Jump the main pointer past this parsed JSON block
+                        
                         idx = end_idx - 1
                 idx += 1
 
             tool_call_detected = len(detected_tools) > 0
             if tool_call_detected and not ALLOW_PARALLEL_TOOLS:
-                #Truncate the array to only look at the first discovered tool call
                 detected_tools = [detected_tools[0]]
 
 
@@ -318,12 +390,12 @@ class AsyncAgentManager:
                     self.var_current_temp = 1.5           
                     if self.consecutive_loops >= 3:
                         self.consecutive_loops = 0  
-                        await on_status("Loop Guard Exception: Maximum consecutive threshold reached.")
+                        await on_status("Loop exception: max consecutive threshold reached.")
                         break
 
 
-                    await on_status(f"Security Warning: {loop_type} loop detected! Recalibrating context temperature...")                    
-                    # Setup valid API history frames so the next turn doesn't crash
+                    await on_status(f"Security Warning: {loop_type} loop detected--> recalibrating context temperature...")                    
+                
                     if tool_call_detected:
                         self.messages.append({
                             "role": "assistant", 
@@ -336,40 +408,66 @@ class AsyncAgentManager:
                     
                     
                     self.messages.append({
-                        "role": "system",
+                        "role": system_directive_role,
                         "content": "CRITICAL NOTICE: You are repeating your previous actions or statements. Break this pattern, change your approach, and try a completely new strategy now."
                     })
                     self.save_history()
                     continue  
                 else:
                     self.consecutive_loops = 0
+            
+            if self.pending_purge:
+                self.messages = self.purge_file_reads(self.messages)
+                self.pending_purge = False
 
+                #if purge_files = true will purge all recently read files from context
 
 
     #EXECUTION LAYER 
             if tool_call_detected:
-                # Check for immediate control breaks (using the first tool's intent as priority)
+                
                 primary_func = detected_tools[0]["name"]
                 if primary_func == "finish_conversation":
                     self.messages.append({"role": "assistant", "content": collected_content_iteration})
-                    self.messages.append({"role": "system", "content": "you finish the task"})
+                    self.messages.append({"role": system_directive_role, "content": "you finish the task"})
                     self.save_history()
-                    await on_status("Conversation concluded by Agent.")
+                    await on_status("Conversation concluded by MineAgent.")
                     break
                 elif primary_func == "let_user_decide":
                     self.messages.append({"role": "assistant", "content": collected_content_iteration})
-                    self.messages.append({"role": "system", "content": "you let the user decide"})
+                    self.messages.append({"role": system_directive_role, "content": "you let the user decide"})
                     
                     self.save_history()
-                    await on_status("Control suspended: Awaiting User decision.")
+                    await on_status("waiting for user decision.")
                     break
 
-
-
-
-                # Build the tool_calls list for the assistant message structure
+                '''for t in detected_tools:
+                    if t["name"]=="edit_file_content" and (EDIT_SAFETY_ON):
+                        await on_edit({"edit_content": t["arguments"] })'''
+                num_files =0
+                
+                
+                if READ_FILE_LIMITER:
+                    for t in detected_tools:
+                        if t["name"]=="read_file":
+                            f_args = t["arguments"]
+                            num_files +=1
+                            files_size += get_file_size(**f_args) #to wrap later
+                           
+                           
+                    if num_files>FILE_LIMIT or files_size>FILE_SIZE_LIMIT:
+                        self.pending_purge= True 
+                        self.messages.append({
+                            "role": system_directive_role,
+                            "content": "CRITICAL NOTICE: You are trying to read files that exceed the context and size limit, the files will be deleted the next iteration.save the vulnerability findings (file, location, description) to your scratchpad now. You can re-read this file later when you're ready to make the fix"
+                        })   
+                #finish the purge half "[purged: content exceeded context limit, see scratchpad]"
+                        
+                
                 api_tool_calls = []
+
                 for t_idx, tool in enumerate(detected_tools):
+
                     api_tool_calls.append({
                         "id": f"call_local_{iteration}_{t_idx}",
                         "type": "function",
@@ -378,18 +476,19 @@ class AsyncAgentManager:
                             "arguments": json.dumps(tool["arguments"])
                         }
                     })
+
                 # This uses a regex to match anything inside curly braces that has a "name" and "arguments" structure
                 cleaned_text_content = re.sub(r'\{\s*"name"\s*:\s*".*?"\s*,\s*"arguments"\s*:\s*\{.*\}\s*\}', '', text_content, flags=re.DOTALL)
                 cleaned_text_content = re.sub(r'\n\s*\n', '\n', cleaned_text_content).strip()
 
-                # tool calls is needed 
+                 
                 self.messages.append({
                     "role": "assistant",
                     "content": collected_content_iteration,
                     "tool_calls": api_tool_calls
                 })
 
-                # Execute each discovered tool sequentially
+                
                 for t_idx, tool in enumerate(detected_tools):
                     t_name = tool["name"]
                     t_args = tool["arguments"]
@@ -413,7 +512,7 @@ class AsyncAgentManager:
                                 "traceback": traceback.format_exc()
                             }
                             print(f"\n[Runtime Guard] Intercepted crash in tool '{t_name}':\n{traceback.format_exc()}", flush=True)
-                        # Append individual tool response frame
+                        
                         self.messages.append({
                             "role": "tool",
                             "tool_call_id": t_id,
@@ -432,15 +531,15 @@ class AsyncAgentManager:
                     #    globals()["rescan_and_rebind_tools"]()
             
             else:
-                # No tool was called. The agent generated plain text.
                 self.messages.append({"role": "assistant", "content": collected_content_iteration})
                 
 
                 if not AUTONOMOUS_MODE:
                     break
-                else:
+                
+                elif not QWEN27B_COMPATIBILITY:
                     self.messages.append({
-                        "role": "system", 
+                        "role": system_directive_role, 
                         "content": (
                             "[System Routing Directive]: You have presented text but have not called a concluding tool. "
                             " If you are completely finished speaking to the user, you MUST output a JSON call for 'finish_conversation'. "

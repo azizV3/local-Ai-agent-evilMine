@@ -1,7 +1,6 @@
-
-
+import os
 from pathlib import Path
-
+from datetime import datetime
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
@@ -41,8 +40,9 @@ def write_to_file(file_name, content):
             file.write(content)
 
             #update log
+            now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             with open(LOG_FILE_PATH, "a", encoding="utf-8") as lfile:
-                lfile.write(f"new file created | path: {target_path}  content:  {content} \n")
+                lfile.write(f"***************** {now} ***************** \n new file created | path: {target_path}  content:  {content} \n")
         return f"sucess"
     except Exception as e:
         return f"[System Error]: Failed to write file '{target_path}'. Reason: {str(e)}"
@@ -74,11 +74,11 @@ def edit_file_content(filename: str = None, file_path: str = None, old_text: str
         with open(target_path, "r", encoding="utf-8") as file:
             content = file.read()
         
-        # Check if the target text actually exists in the file
+        
         if old_text not in content:
             return f"Error: Could not edit file. The text '{old_text}' was not found in '{path_input}'. Ensure line endings and spaces match."
         
-        # Perform replacement
+        
         updated_content = content.replace(old_text, new_text)
         
         with open(target_path, "w", encoding="utf-8") as file:
@@ -86,8 +86,13 @@ def edit_file_content(filename: str = None, file_path: str = None, old_text: str
         
         
         #update log file
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         with open(LOG_FILE_PATH, "a", encoding="utf-8") as lfile:
-            lfile.write(f"target path:{target_path} | old content:  {old_text} | new edited content: {new_text} \n")
+            lfile.write(f"***************** {now} *****************\n"
+            f" target path:{target_path}\n"
+            f"| old content:  {old_text}\n"
+            f"| new edited content: {new_text}\n"
+            )   
 
         return f"Success: Modified '{path_input}'. Replaced occurrence of targeted text."
         
@@ -96,3 +101,9 @@ def edit_file_content(filename: str = None, file_path: str = None, old_text: str
     except Exception as e:
         return f"[System Error]: Failed to edit '{path_input}'. Reason: {str(e)}"
 
+def get_file_size(filename):
+    try:
+        target_path = get_safe_path(filename)
+        return(os.path.getsize(target_path))
+    except:
+        return(0)

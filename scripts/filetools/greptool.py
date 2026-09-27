@@ -82,7 +82,7 @@ class GrepTool:
             findings = []
             blocks = raw_output.split("--\n")  
             
-            # Regex to handle Windows paths and drive letters (e.g., C:\path\file.py:12:code)
+            # Regex to handle Windows paths and drive letters ( C:\path\file.py:12:code)
             line_pattern = re.compile(r"^(.+?)([:\-])([0-9]+)\2(.*)$")
 
             # Get the resolved root directory base path

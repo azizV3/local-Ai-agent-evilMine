@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vulnerable Test App</title>
+</head>
+<body>
+    <h1>System Audit Target</h1>
+    
+    <h3>Test 1: SQL Injection & Reflected XSS</h3>
+    <form action="/search" method="GET">
+        <label for="q">Search Users (Try: <code>admin' OR '1'='1</code> or <code>&lt;script&gt;alert(1)&lt;/script&gt;</code>):</label>
+        <input type="text" id="q" name="q">
+        <button type="submit">Search</button>
+    </form>
+
+    <hr>
+
+    <h3>Test 2: DOM-Based XSS</h3>
+    <p>Current Theme: <span id="theme-display">None</span></p>
+    
+    <script>
+        // PHASE 1: Locate Entry Vectors
+        // Capturing user input from the URL query string
+        const params = new URLSearchParams(window.location.search);
+        let userTheme = params.get('theme');
+
+        // PHASE 2 & 3: Internal Data Flow to DOM Sink
+        if (userTheme) {
+            // VULNERABILITY 3: DOM XSS via innerHTML
+            // Sink: innerHTML processing unescaped URL parameters
+            document.getElementById('theme-display').innerHTML = userTheme;
+        }
+    </script>
+    
+    <p>Try appending <code>?theme=&lt;img src=x onerror=alert('DOM_XSS')&gt;</code> to the URL.</p>
+</body>
+</html>

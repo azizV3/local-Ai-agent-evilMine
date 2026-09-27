@@ -1,21 +1,12 @@
 {
-  "directory_root": "D:\\aiproject\\projects",
-  "subdirectories": [
-    "project 1",
-    "project 1\\scripts"
-  ],
+  "directory_root": ".",
+  "subdirectories": [],
   "files": [
     {
-      "relative_path": "project 1\\c.txt",
-      "extension": ".txt",
-      "size_kb": 0.02,
-      "preview": "can you find me"
-    },
-    {
-      "relative_path": "project 1\\scripts\\New Text Document.txt",
-      "extension": ".txt",
-      "size_kb": 0.0,
-      "preview": "hi"
+      "relative_path": "app.py",
+      "extension": ".py",
+      "size_kb": 1.92,
+      "preview": "\"\"\"Storefront API (Flask). Runs behind nginx on :8000.\"\"\"  import sqlite3  from flask import Flask, jsonify, render_template_string, request from mark..."
     }
   ]
 }

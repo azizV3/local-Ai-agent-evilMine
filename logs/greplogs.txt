@@ -1,0 +1,1266 @@
+Target Directory: D:\aiproject\projects\project 1 | Pattern: complex
+Matches Found: 8
+[
+  {
+    "file": "D:\\aiproject\\projects\\project 1\\about.html",
+    "line": 22,
+    "context_snippet": "19:   </header>\n20:   <main>\n21:     <section>\n22:       <p>This is the about page of our complex full-stack web application.</p>\n23:     </section>\n24:   </main>\n25:   <footer>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\project 1\\about.html",
+    "line": 26,
+    "context_snippet": "23:     </section>\n24:   </main>\n25:   <footer>\n26:     <p>&copy; 2023 Complex Full Stack Web App</p>\n27:   </footer>\n28: </body>\n29: </html>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\project 1\\blog.html",
+    "line": 41,
+    "context_snippet": "38:     </section>\n39:   </main>\n40:   <footer>\n41:     <p>&copy; 2023 Complex Full Stack Web App</p>\n42:   </footer>\n43: </body>\n44: </html>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\project 1\\contact.html",
+    "line": 22,
+    "context_snippet": "19:   </header>\n20:   <main>\n21:     <section>\n22:       <p>This is the contact page of our complex full-stack web application.</p>\n23:     </section>\n24:   </main>\n25:   <footer>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\project 1\\contact.html",
+    "line": 26,
+    "context_snippet": "23:     </section>\n24:   </main>\n25:   <footer>\n26:     <p>&copy; 2023 Complex Full Stack Web App</p>\n27:   </footer>\n28: </body>\n29: </html>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\project 1\\history.html",
+    "line": 30,
+    "context_snippet": "27:   <main>\n28:     <section>\n29:       <h2>Our History</h2>\n30:       <p>The Complex Full Stack Web App was founded in 2023 with the goal of creating a robust and interactive web application.</p>\n31:     </section>\n32:   </main>\n33:   <footer>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\project 1\\history.html",
+    "line": 34,
+    "context_snippet": "31:     </section>\n32:   </main>\n33:   <footer>\n34:     <p>&copy; 2023 Complex Full Stack Web App</p>\n35:   </footer>\n36: </body>\n37: </html>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\project 1\\team.html",
+    "line": 43,
+    "context_snippet": "40:     </section>\n41:   </main>\n42:   <footer>\n43:     <p>&copy; 2023 Complex Full Stack Web App</p>\n44:   </footer>\n45: </body>\n46: </html>"
+  }
+]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: password|passw0rd|pwd|secret|admin|root|login|auth|session|token|cookie|credentials|key|encryption|decryption|hash|cipher|ssl|tls|certificate|private|public|ssh|rsa|dsa|ecdsa|ed25519
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: (request\.(args|form|json|GET|POST))|(location\.search)|(URLSearchParams)
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: (request\.(args|form|json|GET|POST))|(location\.search)|(URLSearchParams)|($_GET|$_POST|$_REQUEST|$_COOKIE|$_SERVER\['REQUEST_URI'\])
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: (request\.(args|form|json|GET|POST))|(location\.search)|(URLSearchParams)|($_GET|$_POST|$_REQUEST|$_COOKIE|$_SERVER\['REQUEST_URI'\])
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: (request\.args|request\.form|request\.json|request\.GET|request\.POST)
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: (location\.search|new URLSearchParams\(|window\.location\.hash)
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: (request\.args|request\.form|request\.json|request\.GET|request\.POST|request\.files|request\.cookies)
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: (location\.search|new URLSearchParams\(|window\.location\.hash|document\.cookie)
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: (request\.args|request\.form|request\.json|request\.GET|request\.POST|request\.files|request\.cookies)
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: (location\.search|new URLSearchParams\(|window\.location\.hash|document\.cookie)
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: (request\.args|request\.form|request\.json|request\.GET|request\.POST)
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: (location\.search|URLSearchParams|window\.location\.hash)
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: (request\.args|request\.form|request\.json|request\.GET|request\.POST|request\.cookies)
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2\project 2 | Pattern: (location\.search|URLSearchParams|window\.location\.hash|document\.cookie)
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\project 2 | Pattern: (request\.(args|form|json|GET|POST))
+Matches Found: 2
+[
+  {
+    "file": "D:\\aiproject\\projects\\project 2\\app.py",
+    "line": 22,
+    "context_snippet": "19: \n20: @app.route('/search', methods=['GET'])\n21: def search_users():\n22:     # PHASE 1: Locate Entry Vectors (request.args captures input)\n23:     user_query = request.args.get('q', '')\n24: \n25:     # PHASE 2 & 3: Internal Data Flow to SQLi Sink"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\project 2\\app.py",
+    "line": 23,
+    "context_snippet": "20: @app.route('/search', methods=['GET'])\n21: def search_users():\n22:     # PHASE 1: Locate Entry Vectors (request.args captures input)\n23:     user_query = request.args.get('q', '')\n24: \n25:     # PHASE 2 & 3: Internal Data Flow to SQLi Sink\n26:     # VULNERABILITY 1: SQL Injection via direct f-string interpolation"
+  }
+]
+Target Directory: D:\aiproject\projects\project 2 | Pattern: (location\.search|URLSearchParams|window\.location\.hash)
+Matches Found: 1
+[
+  {
+    "file": "D:\\aiproject\\projects\\project 2\\index.html",
+    "line": 25,
+    "context_snippet": "22:     <script>\n23:         // PHASE 1: Locate Entry Vectors\n24:         // Capturing user input from the URL query string\n25:         const params = new URLSearchParams(window.location.search);\n26:         let userTheme = params.get('theme');\n27: \n28:         // PHASE 2 & 3: Internal Data Flow to DOM Sink"
+  }
+]
+Target Directory: D:\aiproject\projects\project 2 | Pattern: (innerHTML|outerHTML|document\.write|eval|\$\.html|textContent)
+Matches Found: 3
+[
+  {
+    "file": "D:\\aiproject\\projects\\project 2\\index.html",
+    "line": 30,
+    "context_snippet": "27: \n28:         // PHASE 2 & 3: Internal Data Flow to DOM Sink\n29:         if (userTheme) {\n30:             // VULNERABILITY 3: DOM XSS via innerHTML\n31:             // Sink: innerHTML processing unescaped URL parameters\n32:             document.getElementById('theme-display').innerHTML = userTheme;\n33:         }"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\project 2\\index.html",
+    "line": 31,
+    "context_snippet": "28:         // PHASE 2 & 3: Internal Data Flow to DOM Sink\n29:         if (userTheme) {\n30:             // VULNERABILITY 3: DOM XSS via innerHTML\n31:             // Sink: innerHTML processing unescaped URL parameters\n32:             document.getElementById('theme-display').innerHTML = userTheme;\n33:         }\n34:     </script>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\project 2\\index.html",
+    "line": 32,
+    "context_snippet": "29:         if (userTheme) {\n30:             // VULNERABILITY 3: DOM XSS via innerHTML\n31:             // Sink: innerHTML processing unescaped URL parameters\n32:             document.getElementById('theme-display').innerHTML = userTheme;\n33:         }\n34:     </script>\n35:     "
+  }
+]
+Target Directory: D:\aiproject\projects\project 3 | Pattern: (?i)(sqlalchemy|sqlite3|exec\(|eval\()
+Matches Found: 3
+[
+  {
+    "file": "D:\\aiproject\\projects\\project 3\\app.py",
+    "line": 2,
+    "context_snippet": "1: from flask import Flask, request, render_template_string, render_template\n2: import sqlite3\n3: \n4: app = Flask(__name__)\n5: \n6: def init_db():\n7:     conn = sqlite3.connect('test.db')"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\project 3\\app.py",
+    "line": 7,
+    "context_snippet": "2: import sqlite3\n3: \n4: app = Flask(__name__)\n5: \n6: def init_db():\n7:     conn = sqlite3.connect('test.db')\n8:     cursor = conn.cursor()\n9:     cursor.execute('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, role TEXT)''')\n10:     cursor.execute(\"INSERT OR IGNORE INTO users (id, username, role) VALUES (1, 'admin', 'superuser')\")\n11:     cursor.execute(\"INSERT OR IGNORE INTO users (id, username, role) VALUES (2, 'guest', 'viewer')\")\n12:     conn.commit()"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\project 3\\app.py",
+    "line": 29,
+    "context_snippet": "24: \n25:     # PHASE 2 & 3: Internal Data Flow to SQLi Sink\n26:     # VULNERABILITY 1: SQL Injection via direct f-string interpolation\n27:     db_query = f\"SELECT username, role FROM users WHERE username = '{user_query}'\"\n28:     \n29:     conn = sqlite3.connect('test.db')\n30:     cursor = conn.cursor()\n31:     \n32:     try:\n33:         # Sink: cursor.execute() with unescaped string\n34:         cursor.execute(db_query)"
+  }
+]
+Target Directory: D:\aiproject\projects\project 3 | Pattern: (?i)f".*\{user_query\}.*"
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\p4 | Pattern: (cursor\.execute\(|db\.engine\.execute\()
+Matches Found: 5
+[
+  {
+    "file": "D:\\aiproject\\projects\\p4\\templates\\app.py",
+    "line": 9,
+    "context_snippet": "6: def init_db():\n7:     conn = sqlite3.connect('test.db')\n8:     cursor = conn.cursor()\n9:     cursor.execute('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, role TEXT)''')\n10:     cursor.execute(\"INSERT OR IGNORE INTO users (id, username, role) VALUES (1, 'admin', 'superuser')\")\n11:     cursor.execute(\"INSERT OR IGNORE INTO users (id, username, role) VALUES (2, 'guest', 'viewer')\")\n12:     conn.commit()"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\p4\\templates\\app.py",
+    "line": 10,
+    "context_snippet": "7:     conn = sqlite3.connect('test.db')\n8:     cursor = conn.cursor()\n9:     cursor.execute('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, role TEXT)''')\n10:     cursor.execute(\"INSERT OR IGNORE INTO users (id, username, role) VALUES (1, 'admin', 'superuser')\")\n11:     cursor.execute(\"INSERT OR IGNORE INTO users (id, username, role) VALUES (2, 'guest', 'viewer')\")\n12:     conn.commit()\n13:     conn.close()"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\p4\\templates\\app.py",
+    "line": 11,
+    "context_snippet": "8:     cursor = conn.cursor()\n9:     cursor.execute('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, role TEXT)''')\n10:     cursor.execute(\"INSERT OR IGNORE INTO users (id, username, role) VALUES (1, 'admin', 'superuser')\")\n11:     cursor.execute(\"INSERT OR IGNORE INTO users (id, username, role) VALUES (2, 'guest', 'viewer')\")\n12:     conn.commit()\n13:     conn.close()\n14: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\p4\\templates\\app.py",
+    "line": 33,
+    "context_snippet": "30:     cursor = conn.cursor()\n31:     \n32:     try:\n33:         # Sink: cursor.execute() with unescaped string\n34:         cursor.execute(db_query)\n35:         results = cursor.fetchall()\n36:     except Exception as e:"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\p4\\templates\\app.py",
+    "line": 34,
+    "context_snippet": "31:     \n32:     try:\n33:         # Sink: cursor.execute() with unescaped string\n34:         cursor.execute(db_query)\n35:         results = cursor.fetchall()\n36:     except Exception as e:\n37:         results = f\"Database Error: {e}\""
+  }
+]
+Target Directory: D:\aiproject\projects\p4 | Pattern: (echo|print|render_template_string\()
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\p4 | Pattern: (db_query\s*=|\bdB_query\b)
+Matches Found: 2
+[
+  {
+    "file": "D:\\aiproject\\projects\\p4\\templates\\app.py",
+    "line": 27,
+    "context_snippet": "24: \n25:     # PHASE 2 & 3: Internal Data Flow to SQLi Sink\n26:     # VULNERABILITY 1: SQL Injection via direct f-string interpolation\n27:     db_query = f\"SELECT username, role FROM users WHERE username = '{user_query}'\"\n28:     \n29:     conn = sqlite3.connect('test.db')\n30:     cursor = conn.cursor()"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\p4\\templates\\app.py",
+    "line": 34,
+    "context_snippet": "31:     \n32:     try:\n33:         # Sink: cursor.execute() with unescaped string\n34:         cursor.execute(db_query)\n35:         results = cursor.fetchall()\n36:     except Exception as e:\n37:         results = f\"Database Error: {e}\""
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: ($_GET|$_POST|$_REQUEST|$_COOKIE|REQUEST_URI)
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: (mysqli_query|->query\(|->exec\(|pg_query)
+Matches Found: 5
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 12,
+    "context_snippet": "9: $user = clean_input($user);\n10: \n11: $sql = \"SELECT id, role FROM users WHERE username = '\" . $user . \"' AND password = '\" . md5($pass) . \"'\";\n12: $res = mysqli_query($conn, $sql);\n13: \n14: if ($row = mysqli_fetch_assoc($res)) {\n15:     setcookie('role', $row['role']);"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\profile.php",
+    "line": 14,
+    "context_snippet": "11: function fetch_row(PDO $pdo, $table, $where)\n12: {\n13:     $sql = \"SELECT * FROM $table WHERE $where\";\n14:     return $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);\n15: }\n16: \n17: $id = clean_input($_GET['id'] ?? '');"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 11,
+    "context_snippet": "8: \n9: $offset = ($page - 1) * 20;\n10: $sql = \"SELECT name, price FROM products WHERE name LIKE '%$q%' ORDER BY $sort LIMIT 20 OFFSET $offset\";\n11: $rows = $pdo->query($sql)->fetchAll();\n12: ?>\n13: <h1>Results for <?= $q ?></h1>\n14: <p>Sorted by <?= e($sort) ?></p>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 45,
+    "context_snippet": "42: \n43: ### SQL injection\n44: \n45: Sinks \u00e2\u20ac\u201d PHP: `mysqli_query`, `->query`, `->exec`, `pg_query`.\n46: Python: `cursor.execute`, `engine.execute`, `.raw()`, `.extra()`.\n47: Node: `connection.query`, template literals inside SQL strings.\n48: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 141,
+    "context_snippet": "138: [SQLI-01] SQL injection \u00e2\u20ac\u201d HIGH \u00e2\u20ac\u201d php/login.php:11\n139:   Source:  $_POST['username']            (php/login.php:6)\n140:   Path:    $_POST['username'] -> clean_input() [legacy/utils.php:12, trims only]\n141:            -> $user -> string concat (line 11) -> mysqli_query (line 12)\n142:   Sink:    \"... WHERE username = '\" . $user . \"'\"\n143:   Impact:  Authentication bypass; full read of the users table.\n144:   Fix:     Prepared statement with a bound parameter."
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: (echo |print |<\?=)
+Matches Found: 10
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 22,
+    "context_snippet": "19: | # | File:line | Type | Why it is vulnerable | Correct fix |\n20: |---|---|---|---|---|\n21: | X1 | `php/login.php:16` | Reflected | Raw `echo` of `$_POST['username']`. Line 18 does the same thing safely \u00e2\u20ac\u201d a precision check | `htmlspecialchars(\u00e2\u20ac\u00a6, ENT_QUOTES, 'UTF-8')` |\n22: | X2 | `php/search.php:13` | Reflected | `<?= $q ?>` in HTML text context | `<?= e($q) ?>` |\n23: | X3 | `php/search.php:17` | Stored, attribute context | `data-sku` interpolated unescaped from a DB row | `e()` / `htmlspecialchars` with `ENT_QUOTES` |\n24: | X4 | `php/profile.php:27` | Stored | `bio` column echoed raw; the two lines above it are correctly escaped | `e($profile['bio'])` |\n25: | X5 | `python/app.py:37` | Reflected + **SSTI** | User data f-stringed into the template *source* passed to `render_template_string` | Pass as a context variable: `render_template_string(\"<h2>Hello {{ name }}</h2>\", name=name)` |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 16,
+    "context_snippet": "13: \n14: if ($row = mysqli_fetch_assoc($res)) {\n15:     setcookie('role', $row['role']);\n16:     echo \"Welcome back, \" . $_POST['username'];\n17: } else {\n18:     echo \"Login failed for \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n19: }"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 18,
+    "context_snippet": "15:     setcookie('role', $row['role']);\n16:     echo \"Welcome back, \" . $_POST['username'];\n17: } else {\n18:     echo \"Login failed for \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n19: }"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\profile.php",
+    "line": 25,
+    "context_snippet": "22: $stmt->execute([$id]);\n23: $orderCount = $stmt->fetchColumn();\n24: \n25: echo '<h1>' . e($profile['username']) . '</h1>';\n26: echo '<p>Orders: ' . (int) $orderCount . '</p>';\n27: echo '<p>Bio: ' . $profile['bio'] . '</p>';"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\profile.php",
+    "line": 26,
+    "context_snippet": "23: $orderCount = $stmt->fetchColumn();\n24: \n25: echo '<h1>' . e($profile['username']) . '</h1>';\n26: echo '<p>Orders: ' . (int) $orderCount . '</p>';\n27: echo '<p>Bio: ' . $profile['bio'] . '</p>';"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\profile.php",
+    "line": 27,
+    "context_snippet": "24: \n25: echo '<h1>' . e($profile['username']) . '</h1>';\n26: echo '<p>Orders: ' . (int) $orderCount . '</p>';\n27: echo '<p>Bio: ' . $profile['bio'] . '</p>';"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 13,
+    "context_snippet": "10: $sql = \"SELECT name, price FROM products WHERE name LIKE '%$q%' ORDER BY $sort LIMIT 20 OFFSET $offset\";\n11: $rows = $pdo->query($sql)->fetchAll();\n12: ?>\n13: <h1>Results for <?= $q ?></h1>\n14: <p>Sorted by <?= e($sort) ?></p>\n15: <ul>\n16: <?php foreach ($rows as $r): ?>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 14,
+    "context_snippet": "11: $rows = $pdo->query($sql)->fetchAll();\n12: ?>\n13: <h1>Results for <?= $q ?></h1>\n14: <p>Sorted by <?= e($sort) ?></p>\n15: <ul>\n16: <?php foreach ($rows as $r): ?>\n17:   <li data-sku=\"<?= $r['sku'] ?>\"><?= htmlspecialchars($r['name']) ?> &mdash; <?= (float) $r['price'] ?></li>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 17,
+    "context_snippet": "14: <p>Sorted by <?= e($sort) ?></p>\n15: <ul>\n16: <?php foreach ($rows as $r): ?>\n17:   <li data-sku=\"<?= $r['sku'] ?>\"><?= htmlspecialchars($r['name']) ?> &mdash; <?= (float) $r['price'] ?></li>\n18: <?php endforeach; ?>\n19: </ul>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 63,
+    "context_snippet": "60: \n61: ### Cross-site scripting\n62: \n63: Sinks \u00e2\u20ac\u201d PHP: `echo`, `print`, `<?= ?>`.\n64: Python: string-built responses, `render_template_string`, `Markup`,\n65: `|safe` in templates.\n66: JS/DOM: `innerHTML`, `outerHTML`, `insertAdjacentHTML`, `document.write`,"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: (request\.args|request\.form|request\.json|request\.GET|request\.POST)
+Matches Found: 13
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 13,
+    "context_snippet": "10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 14,
+    "context_snippet": "11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: \n17: ## Cross-site scripting \u00e2\u20ac\u201d 10 findings"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 15,
+    "context_snippet": "12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: \n17: ## Cross-site scripting \u00e2\u20ac\u201d 10 findings\n18: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 70,
+    "context_snippet": "67: `eval`, `new Function`, `$.html()`, `setTimeout` with a string,\n68: `location`/`href` assignment.\n69: \n70: Sources: `$_GET`/`$_POST`/`$_REQUEST`/`$_COOKIE`/`$_SERVER`, `request.args`/\n71: `form`/`json`/`GET`/`POST`/`headers`/`cookies`, `location.search`/`hash`/\n72: `pathname`, `document.cookie`, `document.referrer`, `postMessage`, **and any\n73: column read back from the database that a user can write** (stored XSS)."
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 19,
+    "context_snippet": "16: \n17: @app.route(\"/user\")\n18: def user():\n19:     uid = request.args.get(\"id\", \"\")\n20:     cur = db().cursor()\n21:     cur.execute(f\"SELECT username, email FROM users WHERE id = {uid}\")\n22:     return jsonify(dict(cur.fetchone()))"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 27,
+    "context_snippet": "24: \n25: @app.route(\"/orders\")\n26: def orders():\n27:     uid = request.args.get(\"id\", \"\")\n28:     cur = db().cursor()\n29:     cur.execute(\"SELECT id, total FROM orders WHERE user_id = ?\", (uid,))\n30:     return jsonify([dict(r) for r in cur.fetchall()])"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 35,
+    "context_snippet": "32: \n33: @app.route(\"/greet\")\n34: def greet():\n35:     name = request.args.get(\"name\", \"guest\")\n36:     # Rendered server side so the welcome banner picks up the site theme.\n37:     return render_template_string(f\"<h2 class='banner'>Hello {name}</h2>\")\n38: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 42,
+    "context_snippet": "39: \n40: @app.route(\"/note\", methods=[\"POST\"])\n41: def note():\n42:     body = request.form.get(\"body\", \"\")\n43:     cur = db().cursor()\n44:     # SAFETY: the statement below is parameterised, so this handler is clean.\n45:     cur.execute(\"INSERT INTO notes (body) VALUES (?)\", (body,))"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 52,
+    "context_snippet": "49: \n50: @app.route(\"/admin/audit\")\n51: def audit():\n52:     table = request.args.get(\"table\", \"users\")\n53:     column = request.args.get(\"column\", \"id\")\n54:     cur = db().cursor()\n55:     cur.execute(\"SELECT %s FROM %s ORDER BY 1 DESC LIMIT 50\" % (column, table))"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 53,
+    "context_snippet": "50: @app.route(\"/admin/audit\")\n51: def audit():\n52:     table = request.args.get(\"table\", \"users\")\n53:     column = request.args.get(\"column\", \"id\")\n54:     cur = db().cursor()\n55:     cur.execute(\"SELECT %s FROM %s ORDER BY 1 DESC LIMIT 50\" % (column, table))\n56:     return jsonify([tuple(r) for r in cur.fetchall()])"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 10,
+    "context_snippet": "7: \n8: \n9: def revenue(request):\n10:     region = request.GET.get(\"region\", \"EU\")\n11:     qs = Order.objects.extra(where=[\"region = '%s'\" % region])\n12:     return HttpResponse(\"Total orders: %d\" % qs.count())\n13: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 16,
+    "context_snippet": "13: \n14: \n15: def daily(request):\n16:     day = request.GET.get(\"day\", \"\")\n17:     with connection.cursor() as c:\n18:         c.execute(\"SELECT SUM(total) FROM orders WHERE day = %s\", [day])\n19:         total = c.fetchone()[0]"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 24,
+    "context_snippet": "21: \n22: \n23: def by_status(request):\n24:     status = request.GET.get(\"status\", \"paid\")\n25:     if status not in {\"paid\", \"pending\", \"refunded\"}:\n26:         return HttpResponse(\"unknown status\", status=400)\n27:     qs = Order.objects.raw(\"SELECT * FROM orders WHERE status = %s\", [status])"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: (cursor\.execute|engine\.execute|\.extra\(|\.raw\()
+Matches Found: 6
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 13,
+    "context_snippet": "10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 15,
+    "context_snippet": "12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: \n17: ## Cross-site scripting \u00e2\u20ac\u201d 10 findings\n18: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 41,
+    "context_snippet": "38: | `php/search.php:14`, `:17` (name, price) | Interpolated output | `e()`, `htmlspecialchars`, `(float)` |\n39: | `php/profile.php:21-22` | `$_GET['id']` reaching SQL | Prepared statement |\n40: | `php/profile.php:25-26` | Echoed DB data | `e()` and `(int)` |\n41: | `python/app.py:29`, `:45` | `cursor.execute` with user data | Bound parameters |\n42: | `python/reports.py:17`, `:27` | Raw SQL | Parameterised; `:27` also allowlists first |\n43: | `static/dashboard.js:10` | `location.search` into DOM | `textContent` |\n44: | `static/dashboard.js:21` | `location.search` into DOM | Allowlisted to two constants |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 46,
+    "context_snippet": "43: ### SQL injection\n44: \n45: Sinks \u00e2\u20ac\u201d PHP: `mysqli_query`, `->query`, `->exec`, `pg_query`.\n46: Python: `cursor.execute`, `engine.execute`, `.raw()`, `.extra()`.\n47: Node: `connection.query`, template literals inside SQL strings.\n48: \n49: It is a flaw when untrusted data is concatenated, `%`-formatted, f-stringed, or"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 11,
+    "context_snippet": "8: \n9: def revenue(request):\n10:     region = request.GET.get(\"region\", \"EU\")\n11:     qs = Order.objects.extra(where=[\"region = '%s'\" % region])\n12:     return HttpResponse(\"Total orders: %d\" % qs.count())\n13: \n14: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 27,
+    "context_snippet": "24:     status = request.GET.get(\"status\", \"paid\")\n25:     if status not in {\"paid\", \"pending\", \"refunded\"}:\n26:         return HttpResponse(\"unknown status\", status=400)\n27:     qs = Order.objects.raw(\"SELECT * FROM orders WHERE status = %s\", [status])\n28:     return HttpResponse(\"<p>%d rows</p>\" % len(list(qs)))"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: (render_template_string|f['"]|\+ *request)
+Matches Found: 8
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 25,
+    "context_snippet": "22: | X2 | `php/search.php:13` | Reflected | `<?= $q ?>` in HTML text context | `<?= e($q) ?>` |\n23: | X3 | `php/search.php:17` | Stored, attribute context | `data-sku` interpolated unescaped from a DB row | `e()` / `htmlspecialchars` with `ENT_QUOTES` |\n24: | X4 | `php/profile.php:27` | Stored | `bio` column echoed raw; the two lines above it are correctly escaped | `e($profile['bio'])` |\n25: | X5 | `python/app.py:37` | Reflected + **SSTI** | User data f-stringed into the template *source* passed to `render_template_string` | Pass as a context variable: `render_template_string(\"<h2>Hello {{ name }}</h2>\", name=name)` |\n26: | X6 | `python/app.py:47` | Stored/reflected | Concatenated into returned HTML. The comment on line 44 truthfully describes line 45 and says nothing about line 47 \u00e2\u20ac\u201d decoy | `markupsafe.escape(body)` |\n27: | X7 | `python/reports.py:20` | Reflected | `day` f-stringed into the response body even though the query above is parameterised | `django.utils.html.escape` or a template |\n28: | X8 | `static/dashboard.js:6` | DOM | `location.hash` \u00e2\u2020\u2019 `innerHTML` | `textContent` |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\README.md",
+    "line": 13,
+    "context_snippet": "10: php/login.php        login form handler (mysqli)\n11: php/search.php       product search (PDO) + inline template\n12: php/profile.php      profile page, input travels through two helper functions\n13: python/app.py        Flask API (sqlite3, render_template_string)\n14: python/reports.py    legacy Django reporting views (ORM + raw cursor)\n15: static/dashboard.js  browser-side widgets reading from location/cookies\n16: ```"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 64,
+    "context_snippet": "61: ### Cross-site scripting\n62: \n63: Sinks \u00e2\u20ac\u201d PHP: `echo`, `print`, `<?= ?>`.\n64: Python: string-built responses, `render_template_string`, `Markup`,\n65: `|safe` in templates.\n66: JS/DOM: `innerHTML`, `outerHTML`, `insertAdjacentHTML`, `document.write`,\n67: `eval`, `new Function`, `$.html()`, `setTimeout` with a string,"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 85,
+    "context_snippet": "82: | URL attribute (`href`, `src`) | Validate the scheme; reject `javascript:` |\n83: | Inside `<script>` | Do not interpolate. Pass via `JSON.parse` of a data attribute |\n84: \n85: `render_template_string(f\"...{user}...\")` is both XSS *and* server-side template\n86: injection: the data lands in the template source, not the context. The fix is to\n87: pass a context variable, not to escape the interpolated string.\n88: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 5,
+    "context_snippet": "2: \n3: import sqlite3\n4: \n5: from flask import Flask, jsonify, render_template_string, request\n6: \n7: app = Flask(__name__)\n8: DB_PATH = \"shop.db\""
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 21,
+    "context_snippet": "18: def user():\n19:     uid = request.args.get(\"id\", \"\")\n20:     cur = db().cursor()\n21:     cur.execute(f\"SELECT username, email FROM users WHERE id = {uid}\")\n22:     return jsonify(dict(cur.fetchone()))\n23: \n24: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 37,
+    "context_snippet": "34: def greet():\n35:     name = request.args.get(\"name\", \"guest\")\n36:     # Rendered server side so the welcome banner picks up the site theme.\n37:     return render_template_string(f\"<h2 class='banner'>Hello {name}</h2>\")\n38: \n39: \n40: @app.route(\"/note\", methods=[\"POST\"])"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 20,
+    "context_snippet": "17:     with connection.cursor() as c:\n18:         c.execute(\"SELECT SUM(total) FROM orders WHERE day = %s\", [day])\n19:         total = c.fetchone()[0]\n20:     return HttpResponse(f\"<p>Report for {day}: {total}</p>\")\n21: \n22: \n23: def by_status(request):"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab\php | Pattern: (\$_GET|\$_POST|\$_REQUEST|\$_COOKIE|\$_SERVER\['REQUEST_URI'\])
+Matches Found: 8
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 6,
+    "context_snippet": "3: \n4: $conn = mysqli_connect('localhost', 'app', 'app', 'shop');\n5: \n6: $user = $_POST['username'] ?? '';\n7: $pass = $_POST['password'] ?? '';\n8: \n9: $user = clean_input($user);"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 7,
+    "context_snippet": "4: $conn = mysqli_connect('localhost', 'app', 'app', 'shop');\n5: \n6: $user = $_POST['username'] ?? '';\n7: $pass = $_POST['password'] ?? '';\n8: \n9: $user = clean_input($user);\n10: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 18,
+    "context_snippet": "15: \n16: if ($row = mysqli_fetch_assoc($res)) {\n17:     setcookie('role', $row['role']);\n18:     echo \"Welcome back, \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n19: } else {\n20:     echo \"Login failed for \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n21: }"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 20,
+    "context_snippet": "17:     setcookie('role', $row['role']);\n18:     echo \"Welcome back, \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n19: } else {\n20:     echo \"Login failed for \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n21: }"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\profile.php",
+    "line": 14,
+    "context_snippet": "11:     return $stmt->fetch(PDO::FETCH_ASSOC);\n12: }\n13: \n14: $id = clean_input($_GET['id'] ?? '');\n15: \n16: $profile = fetch_row($pdo, 'users', 'id', $id);\n17: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 5,
+    "context_snippet": "2: require_once __DIR__ . '/../legacy/utils.php';\n3: \n4: $pdo  = db_connect();\n5: $q    = $_GET['q'] ?? '';\n6: $sort = $_GET['sort'] ?? 'name';\n7: $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;\n8: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 6,
+    "context_snippet": "3: \n4: $pdo  = db_connect();\n5: $q    = $_GET['q'] ?? '';\n6: $sort = $_GET['sort'] ?? 'name';\n7: $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;\n8: \n9: $offset = ($page - 1) * 20;"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 7,
+    "context_snippet": "4: $pdo  = db_connect();\n5: $q    = $_GET['q'] ?? '';\n6: $sort = $_GET['sort'] ?? 'name';\n7: $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;\n8: \n9: $offset = ($page - 1) * 20;\n10: $sort = in_array($sort, ['name', 'price'], true) ? $sort : 'name';"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab\python | Pattern: (request\.args|request\.form|request\.json|request\.GET|request\.POST)
+Matches Found: 9
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 20,
+    "context_snippet": "17: \n18: @app.route(\"/user\")\n19: def user():\n20:     uid = request.args.get(\"id\", \"\")\n21:     cur = db().cursor()\n22:     cur.execute(\"SELECT username, email FROM users WHERE id = ?\", (uid,))\n23:     return jsonify(dict(cur.fetchone()))"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 28,
+    "context_snippet": "25: \n26: @app.route(\"/orders\")\n27: def orders():\n28:     uid = request.args.get(\"id\", \"\")\n29:     cur = db().cursor()\n30:     cur.execute(\"SELECT id, total FROM orders WHERE user_id = ?\", (uid,))\n31:     return jsonify([dict(r) for r in cur.fetchall()])"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 36,
+    "context_snippet": "33: \n34: @app.route(\"/greet\")\n35: def greet():\n36:     name = request.args.get(\"name\", \"guest\")\n37:     # Rendered server side so the welcome banner picks up the site theme.\n38:     return render_template_string(\"<h2 class='banner'>Hello {{ name }}</h2>\", name=name)\n39: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 43,
+    "context_snippet": "40: \n41: @app.route(\"/note\", methods=[\"POST\"])\n42: def note():\n43:     body = request.form.get(\"body\", \"\")\n44:     cur = db().cursor()\n45:     # SAFETY: the statement below is parameterised, so this handler is clean.\n46:     cur.execute(\"INSERT INTO notes (body) VALUES (?)\", (body,))"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 53,
+    "context_snippet": "50: \n51: @app.route(\"/admin/audit\")\n52: def audit():\n53:     table = request.args.get(\"table\", \"users\")\n54:     column = request.args.get(\"column\", \"id\")\n55:     if table not in {\"users\", \"orders\", \"products\", \"notes\"} or column not in {\"id\", \"username\", \"email\", \"name\", \"price\", \"total\", \"body\"}:\n56:         return jsonify({\"error\": \"invalid table or column\"}), 400"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 54,
+    "context_snippet": "51: @app.route(\"/admin/audit\")\n52: def audit():\n53:     table = request.args.get(\"table\", \"users\")\n54:     column = request.args.get(\"column\", \"id\")\n55:     if table not in {\"users\", \"orders\", \"products\", \"notes\"} or column not in {\"id\", \"username\", \"email\", \"name\", \"price\", \"total\", \"body\"}:\n56:         return jsonify({\"error\": \"invalid table or column\"}), 400\n57:     cur = db().cursor()"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 11,
+    "context_snippet": "8: \n9: \n10: def revenue(request):\n11:     region = request.GET.get(\"region\", \"EU\")\n12:     qs = Order.objects.filter(region=region)\n13:     return HttpResponse(\"Total orders: %d\" % qs.count())\n14: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 17,
+    "context_snippet": "14: \n15: \n16: def daily(request):\n17:     day = request.GET.get(\"day\", \"\")\n18:     with connection.cursor() as c:\n19:         c.execute(\"SELECT SUM(total) FROM orders WHERE day = %s\", [day])\n20:         total = c.fetchone()[0]"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 25,
+    "context_snippet": "22: \n23: \n24: def by_status(request):\n25:     status = request.GET.get(\"status\", \"paid\")\n26:     if status not in {\"paid\", \"pending\", \"refunded\"}:\n27:         return HttpResponse(\"unknown status\", status=400)\n28:     qs = Order.objects.raw(\"SELECT * FROM orders WHERE status = %s\", [status])"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab\static | Pattern: (location\.search|URLSearchParams|window\.location\.hash)
+Matches Found: 1
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\static\\dashboard.js",
+    "line": 2,
+    "context_snippet": "1: // Seller dashboard widgets.\n2: const params = new URLSearchParams(location.search);\n3: \n4: function renderTitle() {\n5:   const heading = decodeURIComponent(location.hash.slice(1));"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: (\$_GET|\$_POST|\$_REQUEST|\$_COOKIE|\$_SERVER\['REQUEST_URI'\])
+Matches Found: 19
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 9,
+    "context_snippet": "6: \n7: | # | File:line | Entry point | Why it is vulnerable | Correct fix |\n8: |---|---|---|---|---|\n9: | S1 | `php/login.php:11` (sink `:12`) | `$_POST['username']` | Concatenated into the query. `clean_input()` (`legacy/utils.php:12`) only trims \u00e2\u20ac\u201d tracing that helper is the point of the test. | `mysqli_prepare` + bound params |\n10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 10,
+    "context_snippet": "7: | # | File:line | Entry point | Why it is vulnerable | Correct fix |\n8: |---|---|---|---|---|\n9: | S1 | `php/login.php:11` (sink `:12`) | `$_POST['username']` | Concatenated into the query. `clean_input()` (`legacy/utils.php:12`) only trims \u00e2\u20ac\u201d tracing that helper is the point of the test. | `mysqli_prepare` + bound params |\n10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 11,
+    "context_snippet": "8: |---|---|---|---|---|\n9: | S1 | `php/login.php:11` (sink `:12`) | `$_POST['username']` | Concatenated into the query. `clean_input()` (`legacy/utils.php:12`) only trims \u00e2\u20ac\u201d tracing that helper is the point of the test. | `mysqli_prepare` + bound params |\n10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 12,
+    "context_snippet": "9: | S1 | `php/login.php:11` (sink `:12`) | `$_POST['username']` | Concatenated into the query. `clean_input()` (`legacy/utils.php:12`) only trims \u00e2\u20ac\u201d tracing that helper is the point of the test. | `mysqli_prepare` + bound params |\n10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 21,
+    "context_snippet": "18: \n19: | # | File:line | Type | Why it is vulnerable | Correct fix |\n20: |---|---|---|---|---|\n21: | X1 | `php/login.php:16` | Reflected | Raw `echo` of `$_POST['username']`. Line 18 does the same thing safely \u00e2\u20ac\u201d a precision check | `htmlspecialchars(\u00e2\u20ac\u00a6, ENT_QUOTES, 'UTF-8')` |\n22: | X2 | `php/search.php:13` | Reflected | `<?= $q ?>` in HTML text context | `<?= e($q) ?>` |\n23: | X3 | `php/search.php:17` | Stored, attribute context | `data-sku` interpolated unescaped from a DB row | `e()` / `htmlspecialchars` with `ENT_QUOTES` |\n24: | X4 | `php/profile.php:27` | Stored | `bio` column echoed raw; the two lines above it are correctly escaped | `e($profile['bio'])` |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 36,
+    "context_snippet": "33: \n34: | File:line | Looks like | Actually |\n35: |---|---|---|\n36: | `php/login.php:18` | Echoed `$_POST` | Escaped with `ENT_QUOTES` |\n37: | `php/search.php:7` | `$_GET['page']` in SQL | Cast to `int` |\n38: | `php/search.php:14`, `:17` (name, price) | Interpolated output | `e()`, `htmlspecialchars`, `(float)` |\n39: | `php/profile.php:21-22` | `$_GET['id']` reaching SQL | Prepared statement |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 37,
+    "context_snippet": "34: | File:line | Looks like | Actually |\n35: |---|---|---|\n36: | `php/login.php:18` | Echoed `$_POST` | Escaped with `ENT_QUOTES` |\n37: | `php/search.php:7` | `$_GET['page']` in SQL | Cast to `int` |\n38: | `php/search.php:14`, `:17` (name, price) | Interpolated output | `e()`, `htmlspecialchars`, `(float)` |\n39: | `php/profile.php:21-22` | `$_GET['id']` reaching SQL | Prepared statement |\n40: | `php/profile.php:25-26` | Echoed DB data | `e()` and `(int)` |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 39,
+    "context_snippet": "36: | `php/login.php:18` | Echoed `$_POST` | Escaped with `ENT_QUOTES` |\n37: | `php/search.php:7` | `$_GET['page']` in SQL | Cast to `int` |\n38: | `php/search.php:14`, `:17` (name, price) | Interpolated output | `e()`, `htmlspecialchars`, `(float)` |\n39: | `php/profile.php:21-22` | `$_GET['id']` reaching SQL | Prepared statement |\n40: | `php/profile.php:25-26` | Echoed DB data | `e()` and `(int)` |\n41: | `python/app.py:29`, `:45` | `cursor.execute` with user data | Bound parameters |\n42: | `python/reports.py:17`, `:27` | Raw SQL | Parameterised; `:27` also allowlists first |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 6,
+    "context_snippet": "3: \n4: $conn = mysqli_connect('localhost', 'app', 'app', 'shop');\n5: \n6: $user = $_POST['username'] ?? '';\n7: $pass = $_POST['password'] ?? '';\n8: \n9: $user = clean_input($user);"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 7,
+    "context_snippet": "4: $conn = mysqli_connect('localhost', 'app', 'app', 'shop');\n5: \n6: $user = $_POST['username'] ?? '';\n7: $pass = $_POST['password'] ?? '';\n8: \n9: $user = clean_input($user);\n10: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 18,
+    "context_snippet": "15: \n16: if ($row = mysqli_fetch_assoc($res)) {\n17:     setcookie('role', $row['role']);\n18:     echo \"Welcome back, \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n19: } else {\n20:     echo \"Login failed for \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n21: }"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 20,
+    "context_snippet": "17:     setcookie('role', $row['role']);\n18:     echo \"Welcome back, \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n19: } else {\n20:     echo \"Login failed for \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n21: }"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\profile.php",
+    "line": 14,
+    "context_snippet": "11:     return $stmt->fetch(PDO::FETCH_ASSOC);\n12: }\n13: \n14: $id = clean_input($_GET['id'] ?? '');\n15: \n16: $profile = fetch_row($pdo, 'users', 'id', $id);\n17: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 5,
+    "context_snippet": "2: require_once __DIR__ . '/../legacy/utils.php';\n3: \n4: $pdo  = db_connect();\n5: $q    = $_GET['q'] ?? '';\n6: $sort = $_GET['sort'] ?? 'name';\n7: $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;\n8: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 6,
+    "context_snippet": "3: \n4: $pdo  = db_connect();\n5: $q    = $_GET['q'] ?? '';\n6: $sort = $_GET['sort'] ?? 'name';\n7: $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;\n8: \n9: $offset = ($page - 1) * 20;"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 7,
+    "context_snippet": "4: $pdo  = db_connect();\n5: $q    = $_GET['q'] ?? '';\n6: $sort = $_GET['sort'] ?? 'name';\n7: $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;\n8: \n9: $offset = ($page - 1) * 20;\n10: $sort = in_array($sort, ['name', 'price'], true) ? $sort : 'name';"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 70,
+    "context_snippet": "67: `eval`, `new Function`, `$.html()`, `setTimeout` with a string,\n68: `location`/`href` assignment.\n69: \n70: Sources: `$_GET`/`$_POST`/`$_REQUEST`/`$_COOKIE`/`$_SERVER`, `request.args`/\n71: `form`/`json`/`GET`/`POST`/`headers`/`cookies`, `location.search`/`hash`/\n72: `pathname`, `document.cookie`, `document.referrer`, `postMessage`, **and any\n73: column read back from the database that a user can write** (stored XSS)."
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 139,
+    "context_snippet": "136: \n137: ```\n138: [SQLI-01] SQL injection \u00e2\u20ac\u201d HIGH \u00e2\u20ac\u201d php/login.php:11\n139:   Source:  $_POST['username']            (php/login.php:6)\n140:   Path:    $_POST['username'] -> clean_input() [legacy/utils.php:12, trims only]\n141:            -> $user -> string concat (line 11) -> mysqli_query (line 12)\n142:   Sink:    \"... WHERE username = '\" . $user . \"'\""
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 140,
+    "context_snippet": "137: ```\n138: [SQLI-01] SQL injection \u00e2\u20ac\u201d HIGH \u00e2\u20ac\u201d php/login.php:11\n139:   Source:  $_POST['username']            (php/login.php:6)\n140:   Path:    $_POST['username'] -> clean_input() [legacy/utils.php:12, trims only]\n141:            -> $user -> string concat (line 11) -> mysqli_query (line 12)\n142:   Sink:    \"... WHERE username = '\" . $user . \"'\"\n143:   Impact:  Authentication bypass; full read of the users table."
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: (request\.args|request\.form|request\.json|request\.GET|request\.POST)
+Matches Found: 13
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 13,
+    "context_snippet": "10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 14,
+    "context_snippet": "11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: \n17: ## Cross-site scripting \u00e2\u20ac\u201d 10 findings"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 15,
+    "context_snippet": "12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: \n17: ## Cross-site scripting \u00e2\u20ac\u201d 10 findings\n18: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 70,
+    "context_snippet": "67: `eval`, `new Function`, `$.html()`, `setTimeout` with a string,\n68: `location`/`href` assignment.\n69: \n70: Sources: `$_GET`/`$_POST`/`$_REQUEST`/`$_COOKIE`/`$_SERVER`, `request.args`/\n71: `form`/`json`/`GET`/`POST`/`headers`/`cookies`, `location.search`/`hash`/\n72: `pathname`, `document.cookie`, `document.referrer`, `postMessage`, **and any\n73: column read back from the database that a user can write** (stored XSS)."
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 20,
+    "context_snippet": "17: \n18: @app.route(\"/user\")\n19: def user():\n20:     uid = request.args.get(\"id\", \"\")\n21:     cur = db().cursor()\n22:     cur.execute(\"SELECT username, email FROM users WHERE id = ?\", (uid,))\n23:     return jsonify(dict(cur.fetchone()))"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 28,
+    "context_snippet": "25: \n26: @app.route(\"/orders\")\n27: def orders():\n28:     uid = request.args.get(\"id\", \"\")\n29:     cur = db().cursor()\n30:     cur.execute(\"SELECT id, total FROM orders WHERE user_id = ?\", (uid,))\n31:     return jsonify([dict(r) for r in cur.fetchall()])"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 36,
+    "context_snippet": "33: \n34: @app.route(\"/greet\")\n35: def greet():\n36:     name = request.args.get(\"name\", \"guest\")\n37:     # Rendered server side so the welcome banner picks up the site theme.\n38:     return render_template_string(\"<h2 class='banner'>Hello {{ name }}</h2>\", name=name)\n39: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 43,
+    "context_snippet": "40: \n41: @app.route(\"/note\", methods=[\"POST\"])\n42: def note():\n43:     body = request.form.get(\"body\", \"\")\n44:     cur = db().cursor()\n45:     # SAFETY: the statement below is parameterised, so this handler is clean.\n46:     cur.execute(\"INSERT INTO notes (body) VALUES (?)\", (body,))"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 53,
+    "context_snippet": "50: \n51: @app.route(\"/admin/audit\")\n52: def audit():\n53:     table = request.args.get(\"table\", \"users\")\n54:     column = request.args.get(\"column\", \"id\")\n55:     if table not in {\"users\", \"orders\", \"products\", \"notes\"} or column not in {\"id\", \"username\", \"email\", \"name\", \"price\", \"total\", \"body\"}:\n56:         return jsonify({\"error\": \"invalid table or column\"}), 400"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 54,
+    "context_snippet": "51: @app.route(\"/admin/audit\")\n52: def audit():\n53:     table = request.args.get(\"table\", \"users\")\n54:     column = request.args.get(\"column\", \"id\")\n55:     if table not in {\"users\", \"orders\", \"products\", \"notes\"} or column not in {\"id\", \"username\", \"email\", \"name\", \"price\", \"total\", \"body\"}:\n56:         return jsonify({\"error\": \"invalid table or column\"}), 400\n57:     cur = db().cursor()"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 11,
+    "context_snippet": "8: \n9: \n10: def revenue(request):\n11:     region = request.GET.get(\"region\", \"EU\")\n12:     qs = Order.objects.filter(region=region)\n13:     return HttpResponse(\"Total orders: %d\" % qs.count())\n14: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 17,
+    "context_snippet": "14: \n15: \n16: def daily(request):\n17:     day = request.GET.get(\"day\", \"\")\n18:     with connection.cursor() as c:\n19:         c.execute(\"SELECT SUM(total) FROM orders WHERE day = %s\", [day])\n20:         total = c.fetchone()[0]"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 25,
+    "context_snippet": "22: \n23: \n24: def by_status(request):\n25:     status = request.GET.get(\"status\", \"paid\")\n26:     if status not in {\"paid\", \"pending\", \"refunded\"}:\n27:         return HttpResponse(\"unknown status\", status=400)\n28:     qs = Order.objects.raw(\"SELECT * FROM orders WHERE status = %s\", [status])"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: (location\.search|URLSearchParams|window\.location\.hash)
+Matches Found: 6
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 29,
+    "context_snippet": "26: | X6 | `python/app.py:47` | Stored/reflected | Concatenated into returned HTML. The comment on line 44 truthfully describes line 45 and says nothing about line 47 \u00e2\u20ac\u201d decoy | `markupsafe.escape(body)` |\n27: | X7 | `python/reports.py:20` | Reflected | `day` f-stringed into the response body even though the query above is parameterised | `django.utils.html.escape` or a template |\n28: | X8 | `static/dashboard.js:6` | DOM | `location.hash` \u00e2\u2020\u2019 `innerHTML` | `textContent` |\n29: | X9 | `static/dashboard.js:15` | DOM | `location.search` \u00e2\u2020\u2019 `document.write` | Build the node, set `textContent`, append |\n30: | X10 | `static/dashboard.js:27` | DOM, code execution | `location.search` \u00e2\u2020\u2019 `eval` | `JSON.parse` |\n31: \n32: ## Must NOT be reported (precision set)"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 30,
+    "context_snippet": "27: | X7 | `python/reports.py:20` | Reflected | `day` f-stringed into the response body even though the query above is parameterised | `django.utils.html.escape` or a template |\n28: | X8 | `static/dashboard.js:6` | DOM | `location.hash` \u00e2\u2020\u2019 `innerHTML` | `textContent` |\n29: | X9 | `static/dashboard.js:15` | DOM | `location.search` \u00e2\u2020\u2019 `document.write` | Build the node, set `textContent`, append |\n30: | X10 | `static/dashboard.js:27` | DOM, code execution | `location.search` \u00e2\u2020\u2019 `eval` | `JSON.parse` |\n31: \n32: ## Must NOT be reported (precision set)\n33: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 43,
+    "context_snippet": "40: | `php/profile.php:25-26` | Echoed DB data | `e()` and `(int)` |\n41: | `python/app.py:29`, `:45` | `cursor.execute` with user data | Bound parameters |\n42: | `python/reports.py:17`, `:27` | Raw SQL | Parameterised; `:27` also allowlists first |\n43: | `static/dashboard.js:10` | `location.search` into DOM | `textContent` |\n44: | `static/dashboard.js:21` | `location.search` into DOM | Allowlisted to two constants |\n45: | `static/dashboard.js:32` | `document.cookie` into a sink | `setAttribute(\"title\", \u00e2\u20ac\u00a6)` does not execute. Worth a note, not an XSS finding |\n46: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 44,
+    "context_snippet": "41: | `python/app.py:29`, `:45` | `cursor.execute` with user data | Bound parameters |\n42: | `python/reports.py:17`, `:27` | Raw SQL | Parameterised; `:27` also allowlists first |\n43: | `static/dashboard.js:10` | `location.search` into DOM | `textContent` |\n44: | `static/dashboard.js:21` | `location.search` into DOM | Allowlisted to two constants |\n45: | `static/dashboard.js:32` | `document.cookie` into a sink | `setAttribute(\"title\", \u00e2\u20ac\u00a6)` does not execute. Worth a note, not an XSS finding |\n46: \n47: ## Scoring"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 71,
+    "context_snippet": "68: `location`/`href` assignment.\n69: \n70: Sources: `$_GET`/`$_POST`/`$_REQUEST`/`$_COOKIE`/`$_SERVER`, `request.args`/\n71: `form`/`json`/`GET`/`POST`/`headers`/`cookies`, `location.search`/`hash`/\n72: `pathname`, `document.cookie`, `document.referrer`, `postMessage`, **and any\n73: column read back from the database that a user can write** (stored XSS).\n74: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\static\\dashboard.js",
+    "line": 2,
+    "context_snippet": "1: // Seller dashboard widgets.\n2: const params = new URLSearchParams(location.search);\n3: \n4: function renderTitle() {\n5:   const heading = decodeURIComponent(location.hash.slice(1));"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: (\$_GET|\$_POST|\$_REQUEST|\$_COOKIE|\$_SERVER\['REQUEST_URI'\])
+Matches Found: 19
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 9,
+    "context_snippet": "6: \n7: | # | File:line | Entry point | Why it is vulnerable | Correct fix |\n8: |---|---|---|---|---|\n9: | S1 | `php/login.php:11` (sink `:12`) | `$_POST['username']` | Concatenated into the query. `clean_input()` (`legacy/utils.php:12`) only trims \u00e2\u20ac\u201d tracing that helper is the point of the test. | `mysqli_prepare` + bound params |\n10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 10,
+    "context_snippet": "7: | # | File:line | Entry point | Why it is vulnerable | Correct fix |\n8: |---|---|---|---|---|\n9: | S1 | `php/login.php:11` (sink `:12`) | `$_POST['username']` | Concatenated into the query. `clean_input()` (`legacy/utils.php:12`) only trims \u00e2\u20ac\u201d tracing that helper is the point of the test. | `mysqli_prepare` + bound params |\n10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 11,
+    "context_snippet": "8: |---|---|---|---|---|\n9: | S1 | `php/login.php:11` (sink `:12`) | `$_POST['username']` | Concatenated into the query. `clean_input()` (`legacy/utils.php:12`) only trims \u00e2\u20ac\u201d tracing that helper is the point of the test. | `mysqli_prepare` + bound params |\n10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 12,
+    "context_snippet": "9: | S1 | `php/login.php:11` (sink `:12`) | `$_POST['username']` | Concatenated into the query. `clean_input()` (`legacy/utils.php:12`) only trims \u00e2\u20ac\u201d tracing that helper is the point of the test. | `mysqli_prepare` + bound params |\n10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 21,
+    "context_snippet": "18: \n19: | # | File:line | Type | Why it is vulnerable | Correct fix |\n20: |---|---|---|---|---|\n21: | X1 | `php/login.php:16` | Reflected | Raw `echo` of `$_POST['username']`. Line 18 does the same thing safely \u00e2\u20ac\u201d a precision check | `htmlspecialchars(\u00e2\u20ac\u00a6, ENT_QUOTES, 'UTF-8')` |\n22: | X2 | `php/search.php:13` | Reflected | `<?= $q ?>` in HTML text context | `<?= e($q) ?>` |\n23: | X3 | `php/search.php:17` | Stored, attribute context | `data-sku` interpolated unescaped from a DB row | `e()` / `htmlspecialchars` with `ENT_QUOTES` |\n24: | X4 | `php/profile.php:27` | Stored | `bio` column echoed raw; the two lines above it are correctly escaped | `e($profile['bio'])` |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 36,
+    "context_snippet": "33: \n34: | File:line | Looks like | Actually |\n35: |---|---|---|\n36: | `php/login.php:18` | Echoed `$_POST` | Escaped with `ENT_QUOTES` |\n37: | `php/search.php:7` | `$_GET['page']` in SQL | Cast to `int` |\n38: | `php/search.php:14`, `:17` (name, price) | Interpolated output | `e()`, `htmlspecialchars`, `(float)` |\n39: | `php/profile.php:21-22` | `$_GET['id']` reaching SQL | Prepared statement |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 37,
+    "context_snippet": "34: | File:line | Looks like | Actually |\n35: |---|---|---|\n36: | `php/login.php:18` | Echoed `$_POST` | Escaped with `ENT_QUOTES` |\n37: | `php/search.php:7` | `$_GET['page']` in SQL | Cast to `int` |\n38: | `php/search.php:14`, `:17` (name, price) | Interpolated output | `e()`, `htmlspecialchars`, `(float)` |\n39: | `php/profile.php:21-22` | `$_GET['id']` reaching SQL | Prepared statement |\n40: | `php/profile.php:25-26` | Echoed DB data | `e()` and `(int)` |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 39,
+    "context_snippet": "36: | `php/login.php:18` | Echoed `$_POST` | Escaped with `ENT_QUOTES` |\n37: | `php/search.php:7` | `$_GET['page']` in SQL | Cast to `int` |\n38: | `php/search.php:14`, `:17` (name, price) | Interpolated output | `e()`, `htmlspecialchars`, `(float)` |\n39: | `php/profile.php:21-22` | `$_GET['id']` reaching SQL | Prepared statement |\n40: | `php/profile.php:25-26` | Echoed DB data | `e()` and `(int)` |\n41: | `python/app.py:29`, `:45` | `cursor.execute` with user data | Bound parameters |\n42: | `python/reports.py:17`, `:27` | Raw SQL | Parameterised; `:27` also allowlists first |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 6,
+    "context_snippet": "3: \n4: $conn = mysqli_connect('localhost', 'app', 'app', 'shop');\n5: \n6: $user = $_POST['username'] ?? '';\n7: $pass = $_POST['password'] ?? '';\n8: \n9: $user = clean_input($user);"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 7,
+    "context_snippet": "4: $conn = mysqli_connect('localhost', 'app', 'app', 'shop');\n5: \n6: $user = $_POST['username'] ?? '';\n7: $pass = $_POST['password'] ?? '';\n8: \n9: $user = clean_input($user);\n10: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 18,
+    "context_snippet": "15: \n16: if ($row = mysqli_fetch_assoc($res)) {\n17:     setcookie('role', $row['role']);\n18:     echo \"Welcome back, \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n19: } else {\n20:     echo \"Login failed for \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n21: }"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 20,
+    "context_snippet": "17:     setcookie('role', $row['role']);\n18:     echo \"Welcome back, \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n19: } else {\n20:     echo \"Login failed for \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n21: }"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\profile.php",
+    "line": 14,
+    "context_snippet": "11:     return $stmt->fetch(PDO::FETCH_ASSOC);\n12: }\n13: \n14: $id = clean_input($_GET['id'] ?? '');\n15: \n16: $profile = fetch_row($pdo, 'users', 'id', $id);\n17: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 5,
+    "context_snippet": "2: require_once __DIR__ . '/../legacy/utils.php';\n3: \n4: $pdo  = db_connect();\n5: $q    = $_GET['q'] ?? '';\n6: $sort = $_GET['sort'] ?? 'name';\n7: $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;\n8: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 6,
+    "context_snippet": "3: \n4: $pdo  = db_connect();\n5: $q    = $_GET['q'] ?? '';\n6: $sort = $_GET['sort'] ?? 'name';\n7: $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;\n8: \n9: $offset = ($page - 1) * 20;"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 7,
+    "context_snippet": "4: $pdo  = db_connect();\n5: $q    = $_GET['q'] ?? '';\n6: $sort = $_GET['sort'] ?? 'name';\n7: $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;\n8: \n9: $offset = ($page - 1) * 20;\n10: $sort = in_array($sort, ['name', 'price'], true) ? $sort : 'name';"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 70,
+    "context_snippet": "67: `eval`, `new Function`, `$.html()`, `setTimeout` with a string,\n68: `location`/`href` assignment.\n69: \n70: Sources: `$_GET`/`$_POST`/`$_REQUEST`/`$_COOKIE`/`$_SERVER`, `request.args`/\n71: `form`/`json`/`GET`/`POST`/`headers`/`cookies`, `location.search`/`hash`/\n72: `pathname`, `document.cookie`, `document.referrer`, `postMessage`, **and any\n73: column read back from the database that a user can write** (stored XSS)."
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 139,
+    "context_snippet": "136: \n137: ```\n138: [SQLI-01] SQL injection \u00e2\u20ac\u201d HIGH \u00e2\u20ac\u201d php/login.php:11\n139:   Source:  $_POST['username']            (php/login.php:6)\n140:   Path:    $_POST['username'] -> clean_input() [legacy/utils.php:12, trims only]\n141:            -> $user -> string concat (line 11) -> mysqli_query (line 12)\n142:   Sink:    \"... WHERE username = '\" . $user . \"'\""
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 140,
+    "context_snippet": "137: ```\n138: [SQLI-01] SQL injection \u00e2\u20ac\u201d HIGH \u00e2\u20ac\u201d php/login.php:11\n139:   Source:  $_POST['username']            (php/login.php:6)\n140:   Path:    $_POST['username'] -> clean_input() [legacy/utils.php:12, trims only]\n141:            -> $user -> string concat (line 11) -> mysqli_query (line 12)\n142:   Sink:    \"... WHERE username = '\" . $user . \"'\"\n143:   Impact:  Authentication bypass; full read of the users table."
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: (request\.args|request\.form|request\.json|request\.GET|request\.POST)
+Matches Found: 13
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 13,
+    "context_snippet": "10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 14,
+    "context_snippet": "11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: \n17: ## Cross-site scripting \u00e2\u20ac\u201d 10 findings"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 15,
+    "context_snippet": "12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: \n17: ## Cross-site scripting \u00e2\u20ac\u201d 10 findings\n18: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 70,
+    "context_snippet": "67: `eval`, `new Function`, `$.html()`, `setTimeout` with a string,\n68: `location`/`href` assignment.\n69: \n70: Sources: `$_GET`/`$_POST`/`$_REQUEST`/`$_COOKIE`/`$_SERVER`, `request.args`/\n71: `form`/`json`/`GET`/`POST`/`headers`/`cookies`, `location.search`/`hash`/\n72: `pathname`, `document.cookie`, `document.referrer`, `postMessage`, **and any\n73: column read back from the database that a user can write** (stored XSS)."
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 20,
+    "context_snippet": "17: \n18: @app.route(\"/user\")\n19: def user():\n20:     uid = request.args.get(\"id\", \"\")\n21:     cur = db().cursor()\n22:     cur.execute(\"SELECT username, email FROM users WHERE id = ?\", (uid,))\n23:     return jsonify(dict(cur.fetchone()))"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 28,
+    "context_snippet": "25: \n26: @app.route(\"/orders\")\n27: def orders():\n28:     uid = request.args.get(\"id\", \"\")\n29:     cur = db().cursor()\n30:     cur.execute(\"SELECT id, total FROM orders WHERE user_id = ?\", (uid,))\n31:     return jsonify([dict(r) for r in cur.fetchall()])"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 36,
+    "context_snippet": "33: \n34: @app.route(\"/greet\")\n35: def greet():\n36:     name = request.args.get(\"name\", \"guest\")\n37:     # Rendered server side so the welcome banner picks up the site theme.\n38:     return render_template_string(\"<h2 class='banner'>Hello {{ name }}</h2>\", name=name)\n39: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 43,
+    "context_snippet": "40: \n41: @app.route(\"/note\", methods=[\"POST\"])\n42: def note():\n43:     body = request.form.get(\"body\", \"\")\n44:     cur = db().cursor()\n45:     # SAFETY: the statement below is parameterised, so this handler is clean.\n46:     cur.execute(\"INSERT INTO notes (body) VALUES (?)\", (body,))"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 53,
+    "context_snippet": "50: \n51: @app.route(\"/admin/audit\")\n52: def audit():\n53:     table = request.args.get(\"table\", \"users\")\n54:     column = request.args.get(\"column\", \"id\")\n55:     if table not in {\"users\", \"orders\", \"products\", \"notes\"} or column not in {\"id\", \"username\", \"email\", \"name\", \"price\", \"total\", \"body\"}:\n56:         return jsonify({\"error\": \"invalid table or column\"}), 400"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\app.py",
+    "line": 54,
+    "context_snippet": "51: @app.route(\"/admin/audit\")\n52: def audit():\n53:     table = request.args.get(\"table\", \"users\")\n54:     column = request.args.get(\"column\", \"id\")\n55:     if table not in {\"users\", \"orders\", \"products\", \"notes\"} or column not in {\"id\", \"username\", \"email\", \"name\", \"price\", \"total\", \"body\"}:\n56:         return jsonify({\"error\": \"invalid table or column\"}), 400\n57:     cur = db().cursor()"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 11,
+    "context_snippet": "8: \n9: \n10: def revenue(request):\n11:     region = request.GET.get(\"region\", \"EU\")\n12:     qs = Order.objects.filter(region=region)\n13:     return HttpResponse(\"Total orders: %d\" % qs.count())\n14: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 17,
+    "context_snippet": "14: \n15: \n16: def daily(request):\n17:     day = request.GET.get(\"day\", \"\")\n18:     with connection.cursor() as c:\n19:         c.execute(\"SELECT SUM(total) FROM orders WHERE day = %s\", [day])\n20:         total = c.fetchone()[0]"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 25,
+    "context_snippet": "22: \n23: \n24: def by_status(request):\n25:     status = request.GET.get(\"status\", \"paid\")\n26:     if status not in {\"paid\", \"pending\", \"refunded\"}:\n27:         return HttpResponse(\"unknown status\", status=400)\n28:     qs = Order.objects.raw(\"SELECT * FROM orders WHERE status = %s\", [status])"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: (location\.search|URLSearchParams|window\.location\.hash)
+Matches Found: 6
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 29,
+    "context_snippet": "26: | X6 | `python/app.py:47` | Stored/reflected | Concatenated into returned HTML. The comment on line 44 truthfully describes line 45 and says nothing about line 47 \u00e2\u20ac\u201d decoy | `markupsafe.escape(body)` |\n27: | X7 | `python/reports.py:20` | Reflected | `day` f-stringed into the response body even though the query above is parameterised | `django.utils.html.escape` or a template |\n28: | X8 | `static/dashboard.js:6` | DOM | `location.hash` \u00e2\u2020\u2019 `innerHTML` | `textContent` |\n29: | X9 | `static/dashboard.js:15` | DOM | `location.search` \u00e2\u2020\u2019 `document.write` | Build the node, set `textContent`, append |\n30: | X10 | `static/dashboard.js:27` | DOM, code execution | `location.search` \u00e2\u2020\u2019 `eval` | `JSON.parse` |\n31: \n32: ## Must NOT be reported (precision set)"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 30,
+    "context_snippet": "27: | X7 | `python/reports.py:20` | Reflected | `day` f-stringed into the response body even though the query above is parameterised | `django.utils.html.escape` or a template |\n28: | X8 | `static/dashboard.js:6` | DOM | `location.hash` \u00e2\u2020\u2019 `innerHTML` | `textContent` |\n29: | X9 | `static/dashboard.js:15` | DOM | `location.search` \u00e2\u2020\u2019 `document.write` | Build the node, set `textContent`, append |\n30: | X10 | `static/dashboard.js:27` | DOM, code execution | `location.search` \u00e2\u2020\u2019 `eval` | `JSON.parse` |\n31: \n32: ## Must NOT be reported (precision set)\n33: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 43,
+    "context_snippet": "40: | `php/profile.php:25-26` | Echoed DB data | `e()` and `(int)` |\n41: | `python/app.py:29`, `:45` | `cursor.execute` with user data | Bound parameters |\n42: | `python/reports.py:17`, `:27` | Raw SQL | Parameterised; `:27` also allowlists first |\n43: | `static/dashboard.js:10` | `location.search` into DOM | `textContent` |\n44: | `static/dashboard.js:21` | `location.search` into DOM | Allowlisted to two constants |\n45: | `static/dashboard.js:32` | `document.cookie` into a sink | `setAttribute(\"title\", \u00e2\u20ac\u00a6)` does not execute. Worth a note, not an XSS finding |\n46: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 44,
+    "context_snippet": "41: | `python/app.py:29`, `:45` | `cursor.execute` with user data | Bound parameters |\n42: | `python/reports.py:17`, `:27` | Raw SQL | Parameterised; `:27` also allowlists first |\n43: | `static/dashboard.js:10` | `location.search` into DOM | `textContent` |\n44: | `static/dashboard.js:21` | `location.search` into DOM | Allowlisted to two constants |\n45: | `static/dashboard.js:32` | `document.cookie` into a sink | `setAttribute(\"title\", \u00e2\u20ac\u00a6)` does not execute. Worth a note, not an XSS finding |\n46: \n47: ## Scoring"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 71,
+    "context_snippet": "68: `location`/`href` assignment.\n69: \n70: Sources: `$_GET`/`$_POST`/`$_REQUEST`/`$_COOKIE`/`$_SERVER`, `request.args`/\n71: `form`/`json`/`GET`/`POST`/`headers`/`cookies`, `location.search`/`hash`/\n72: `pathname`, `document.cookie`, `document.referrer`, `postMessage`, **and any\n73: column read back from the database that a user can write** (stored XSS).\n74: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\static\\dashboard.js",
+    "line": 2,
+    "context_snippet": "1: // Seller dashboard widgets.\n2: const params = new URLSearchParams(location.search);\n3: \n4: function renderTitle() {\n5:   const heading = decodeURIComponent(location.hash.slice(1));"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: _\$(GET|POST|REQUEST|COOKIE)\b
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: _\$(GET|POST|REQUEST|COOKIE)\b
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: _\$GET
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: $_GET|$_POST|$_REQUEST|$_COOKIE|$_SERVER\['REQUEST_URI'\]
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: mysqli_query|->query\(|->exec\(|pg_query
+Matches Found: 2
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 45,
+    "context_snippet": "42: \n43: ### SQL injection\n44: \n45: Sinks \u00e2\u20ac\u201d PHP: `mysqli_query`, `->query`, `->exec`, `pg_query`.\n46: Python: `cursor.execute`, `engine.execute`, `.raw()`, `.extra()`.\n47: Node: `connection.query`, template literals inside SQL strings.\n48: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 141,
+    "context_snippet": "138: [SQLI-01] SQL injection \u00e2\u20ac\u201d HIGH \u00e2\u20ac\u201d php/login.php:11\n139:   Source:  $_POST['username']            (php/login.php:6)\n140:   Path:    $_POST['username'] -> clean_input() [legacy/utils.php:12, trims only]\n141:            -> $user -> string concat (line 11) -> mysqli_query (line 12)\n142:   Sink:    \"... WHERE username = '\" . $user . \"'\"\n143:   Impact:  Authentication bypass; full read of the users table.\n144:   Fix:     Prepared statement with a bound parameter."
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: echo\s|print\s|<\?=
+Matches Found: 10
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 22,
+    "context_snippet": "19: | # | File:line | Type | Why it is vulnerable | Correct fix |\n20: |---|---|---|---|---|\n21: | X1 | `php/login.php:16` | Reflected | Raw `echo` of `$_POST['username']`. Line 18 does the same thing safely \u00e2\u20ac\u201d a precision check | `htmlspecialchars(\u00e2\u20ac\u00a6, ENT_QUOTES, 'UTF-8')` |\n22: | X2 | `php/search.php:13` | Reflected | `<?= $q ?>` in HTML text context | `<?= e($q) ?>` |\n23: | X3 | `php/search.php:17` | Stored, attribute context | `data-sku` interpolated unescaped from a DB row | `e()` / `htmlspecialchars` with `ENT_QUOTES` |\n24: | X4 | `php/profile.php:27` | Stored | `bio` column echoed raw; the two lines above it are correctly escaped | `e($profile['bio'])` |\n25: | X5 | `python/app.py:37` | Reflected + **SSTI** | User data f-stringed into the template *source* passed to `render_template_string` | Pass as a context variable: `render_template_string(\"<h2>Hello {{ name }}</h2>\", name=name)` |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 18,
+    "context_snippet": "15: \n16: if ($row = mysqli_fetch_assoc($res)) {\n17:     setcookie('role', $row['role']);\n18:     echo \"Welcome back, \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n19: } else {\n20:     echo \"Login failed for \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n21: }"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\login.php",
+    "line": 20,
+    "context_snippet": "17:     setcookie('role', $row['role']);\n18:     echo \"Welcome back, \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n19: } else {\n20:     echo \"Login failed for \" . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');\n21: }"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\profile.php",
+    "line": 22,
+    "context_snippet": "19: $stmt->execute([$id]);\n20: $orderCount = $stmt->fetchColumn();\n21: \n22: echo '<h1>' . e($profile['username']) . '</h1>';\n23: echo '<p>Orders: ' . (int) $orderCount . '</p>';\n24: echo '<p>Bio: ' . e($profile['bio']) . '</p>';"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\profile.php",
+    "line": 23,
+    "context_snippet": "20: $orderCount = $stmt->fetchColumn();\n21: \n22: echo '<h1>' . e($profile['username']) . '</h1>';\n23: echo '<p>Orders: ' . (int) $orderCount . '</p>';\n24: echo '<p>Bio: ' . e($profile['bio']) . '</p>';"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\profile.php",
+    "line": 24,
+    "context_snippet": "21: \n22: echo '<h1>' . e($profile['username']) . '</h1>';\n23: echo '<p>Orders: ' . (int) $orderCount . '</p>';\n24: echo '<p>Bio: ' . e($profile['bio']) . '</p>';"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 16,
+    "context_snippet": "13: $stmt->execute([$like]);\n14: $rows = $stmt->fetchAll();\n15: ?>\n16: <h1>Results for <?= e($q) ?></h1>\n17: <p>Sorted by <?= e($sort) ?></p>\n18: <ul>\n19: <?php foreach ($rows as $r): ?>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 17,
+    "context_snippet": "14: $rows = $stmt->fetchAll();\n15: ?>\n16: <h1>Results for <?= e($q) ?></h1>\n17: <p>Sorted by <?= e($sort) ?></p>\n18: <ul>\n19: <?php foreach ($rows as $r): ?>\n20:   <li data-sku=\"<?= e($r['sku']) ?>\"><?= htmlspecialchars($r['name']) ?> &mdash; <?= (float) $r['price'] ?></li>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\php\\search.php",
+    "line": 20,
+    "context_snippet": "17: <p>Sorted by <?= e($sort) ?></p>\n18: <ul>\n19: <?php foreach ($rows as $r): ?>\n20:   <li data-sku=\"<?= e($r['sku']) ?>\"><?= htmlspecialchars($r['name']) ?> &mdash; <?= (float) $r['price'] ?></li>\n21: <?php endforeach; ?>\n22: </ul>"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 63,
+    "context_snippet": "60: \n61: ### Cross-site scripting\n62: \n63: Sinks \u00e2\u20ac\u201d PHP: `echo`, `print`, `<?= ?>`.\n64: Python: string-built responses, `render_template_string`, `Markup`,\n65: `|safe` in templates.\n66: JS/DOM: `innerHTML`, `outerHTML`, `insertAdjacentHTML`, `document.write`,"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: request\.args|request\.form|request\.json|request\.GET|request\.POST
+Matches Found: 7
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 13,
+    "context_snippet": "10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 14,
+    "context_snippet": "11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: \n17: ## Cross-site scripting \u00e2\u20ac\u201d 10 findings"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 15,
+    "context_snippet": "12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: \n17: ## Cross-site scripting \u00e2\u20ac\u201d 10 findings\n18: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 70,
+    "context_snippet": "67: `eval`, `new Function`, `$.html()`, `setTimeout` with a string,\n68: `location`/`href` assignment.\n69: \n70: Sources: `$_GET`/`$_POST`/`$_REQUEST`/`$_COOKIE`/`$_SERVER`, `request.args`/\n71: `form`/`json`/`GET`/`POST`/`headers`/`cookies`, `location.search`/`hash`/\n72: `pathname`, `document.cookie`, `document.referrer`, `postMessage`, **and any\n73: column read back from the database that a user can write** (stored XSS)."
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 11,
+    "context_snippet": "8: \n9: \n10: def revenue(request):\n11:     region = request.GET.get(\"region\", \"EU\")\n12:     qs = Order.objects.filter(region=region)\n13:     return HttpResponse(\"Total orders: %d\" % qs.count())\n14: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 17,
+    "context_snippet": "14: \n15: \n16: def daily(request):\n17:     day = request.GET.get(\"day\", \"\")\n18:     with connection.cursor() as c:\n19:         c.execute(\"SELECT SUM(total) FROM orders WHERE day = %s\", [day])\n20:         total = c.fetchone()[0]"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 25,
+    "context_snippet": "22: \n23: \n24: def by_status(request):\n25:     status = request.GET.get(\"status\", \"paid\")\n26:     if status not in {\"paid\", \"pending\", \"refunded\"}:\n27:         return HttpResponse(\"unknown status\", status=400)\n28:     qs = Order.objects.raw(\"SELECT * FROM orders WHERE status = %s\", [status])"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: cursor\.execute|engine\.execute|\.extra\(|\.raw\(
+Matches Found: 5
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 13,
+    "context_snippet": "10: | S2 | `php/search.php:10` | `$_GET['q']` | Interpolated inside a `LIKE '%\u00e2\u20ac\u00a6%'` literal | Placeholder + `%` added to the bound value, not the SQL |\n11: | S3 | `php/search.php:10` | `$_GET['sort']` | Interpolated as an `ORDER BY` **identifier** | Allowlist of column names. A placeholder is invalid here \u00e2\u20ac\u201d flag agents that \"fix\" it with `?` |\n12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 15,
+    "context_snippet": "12: | S4 | `php/profile.php:13` | `$_GET['id']` \u00e2\u2020\u2019 `clean_input` (`:19`) \u00e2\u2020\u2019 `build_where` (`:8`) \u00e2\u2020\u2019 `fetch_row` (`:13`) | Three-hop flow; the string is assembled in one function and executed in another | Parameterise `fetch_row`, or pass bound values down instead of a prebuilt WHERE clause |\n13: | S5 | `python/app.py:21` | `request.args[\"id\"]` | f-string interpolation into `cursor.execute` | `cur.execute(\"\u00e2\u20ac\u00a6 WHERE id = ?\", (uid,))` |\n14: | S6 | `python/app.py:55` | `request.args[\"table\"]`, `[\"column\"]` | `%`-formatted identifiers | Allowlist both; placeholders cannot bind identifiers |\n15: | S7 | `python/reports.py:11` | `request.GET[\"region\"]` | `%`-formatted into `.extra(where=[\u00e2\u20ac\u00a6])` | `Order.objects.filter(region=region)` |\n16: \n17: ## Cross-site scripting \u00e2\u20ac\u201d 10 findings\n18: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 41,
+    "context_snippet": "38: | `php/search.php:14`, `:17` (name, price) | Interpolated output | `e()`, `htmlspecialchars`, `(float)` |\n39: | `php/profile.php:21-22` | `$_GET['id']` reaching SQL | Prepared statement |\n40: | `php/profile.php:25-26` | Echoed DB data | `e()` and `(int)` |\n41: | `python/app.py:29`, `:45` | `cursor.execute` with user data | Bound parameters |\n42: | `python/reports.py:17`, `:27` | Raw SQL | Parameterised; `:27` also allowlists first |\n43: | `static/dashboard.js:10` | `location.search` into DOM | `textContent` |\n44: | `static/dashboard.js:21` | `location.search` into DOM | Allowlisted to two constants |"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 46,
+    "context_snippet": "43: ### SQL injection\n44: \n45: Sinks \u00e2\u20ac\u201d PHP: `mysqli_query`, `->query`, `->exec`, `pg_query`.\n46: Python: `cursor.execute`, `engine.execute`, `.raw()`, `.extra()`.\n47: Node: `connection.query`, template literals inside SQL strings.\n48: \n49: It is a flaw when untrusted data is concatenated, `%`-formatted, f-stringed, or"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 28,
+    "context_snippet": "25:     status = request.GET.get(\"status\", \"paid\")\n26:     if status not in {\"paid\", \"pending\", \"refunded\"}:\n27:         return HttpResponse(\"unknown status\", status=400)\n28:     qs = Order.objects.raw(\"SELECT * FROM orders WHERE status = %s\", [status])\n29:     return HttpResponse(\"<p>%d rows</p>\" % len(list(qs)))"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: f['"][^'"]*request|HttpResponse\(
+Matches Found: 4
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 13,
+    "context_snippet": "10: def revenue(request):\n11:     region = request.GET.get(\"region\", \"EU\")\n12:     qs = Order.objects.filter(region=region)\n13:     return HttpResponse(\"Total orders: %d\" % qs.count())\n14: \n15: \n16: def daily(request):"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 21,
+    "context_snippet": "18:     with connection.cursor() as c:\n19:         c.execute(\"SELECT SUM(total) FROM orders WHERE day = %s\", [day])\n20:         total = c.fetchone()[0]\n21:     return HttpResponse(f\"<p>Report for {escape(day)}: {total}</p>\")\n22: \n23: \n24: def by_status(request):"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 27,
+    "context_snippet": "24: def by_status(request):\n25:     status = request.GET.get(\"status\", \"paid\")\n26:     if status not in {\"paid\", \"pending\", \"refunded\"}:\n27:         return HttpResponse(\"unknown status\", status=400)\n28:     qs = Order.objects.raw(\"SELECT * FROM orders WHERE status = %s\", [status])\n29:     return HttpResponse(\"<p>%d rows</p>\" % len(list(qs)))"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\python\\reports.py",
+    "line": 29,
+    "context_snippet": "26:     if status not in {\"paid\", \"pending\", \"refunded\"}:\n27:         return HttpResponse(\"unknown status\", status=400)\n28:     qs = Order.objects.raw(\"SELECT * FROM orders WHERE status = %s\", [status])\n29:     return HttpResponse(\"<p>%d rows</p>\" % len(list(qs)))"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: location\.search|URLSearchParams|location\.hash|document\.cookie
+Matches Found: 11
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 28,
+    "context_snippet": "25: | X5 | `python/app.py:37` | Reflected + **SSTI** | User data f-stringed into the template *source* passed to `render_template_string` | Pass as a context variable: `render_template_string(\"<h2>Hello {{ name }}</h2>\", name=name)` |\n26: | X6 | `python/app.py:47` | Stored/reflected | Concatenated into returned HTML. The comment on line 44 truthfully describes line 45 and says nothing about line 47 \u00e2\u20ac\u201d decoy | `markupsafe.escape(body)` |\n27: | X7 | `python/reports.py:20` | Reflected | `day` f-stringed into the response body even though the query above is parameterised | `django.utils.html.escape` or a template |\n28: | X8 | `static/dashboard.js:6` | DOM | `location.hash` \u00e2\u2020\u2019 `innerHTML` | `textContent` |\n29: | X9 | `static/dashboard.js:15` | DOM | `location.search` \u00e2\u2020\u2019 `document.write` | Build the node, set `textContent`, append |\n30: | X10 | `static/dashboard.js:27` | DOM, code execution | `location.search` \u00e2\u2020\u2019 `eval` | `JSON.parse` |\n31: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 29,
+    "context_snippet": "26: | X6 | `python/app.py:47` | Stored/reflected | Concatenated into returned HTML. The comment on line 44 truthfully describes line 45 and says nothing about line 47 \u00e2\u20ac\u201d decoy | `markupsafe.escape(body)` |\n27: | X7 | `python/reports.py:20` | Reflected | `day` f-stringed into the response body even though the query above is parameterised | `django.utils.html.escape` or a template |\n28: | X8 | `static/dashboard.js:6` | DOM | `location.hash` \u00e2\u2020\u2019 `innerHTML` | `textContent` |\n29: | X9 | `static/dashboard.js:15` | DOM | `location.search` \u00e2\u2020\u2019 `document.write` | Build the node, set `textContent`, append |\n30: | X10 | `static/dashboard.js:27` | DOM, code execution | `location.search` \u00e2\u2020\u2019 `eval` | `JSON.parse` |\n31: \n32: ## Must NOT be reported (precision set)"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 30,
+    "context_snippet": "27: | X7 | `python/reports.py:20` | Reflected | `day` f-stringed into the response body even though the query above is parameterised | `django.utils.html.escape` or a template |\n28: | X8 | `static/dashboard.js:6` | DOM | `location.hash` \u00e2\u2020\u2019 `innerHTML` | `textContent` |\n29: | X9 | `static/dashboard.js:15` | DOM | `location.search` \u00e2\u2020\u2019 `document.write` | Build the node, set `textContent`, append |\n30: | X10 | `static/dashboard.js:27` | DOM, code execution | `location.search` \u00e2\u2020\u2019 `eval` | `JSON.parse` |\n31: \n32: ## Must NOT be reported (precision set)\n33: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 43,
+    "context_snippet": "40: | `php/profile.php:25-26` | Echoed DB data | `e()` and `(int)` |\n41: | `python/app.py:29`, `:45` | `cursor.execute` with user data | Bound parameters |\n42: | `python/reports.py:17`, `:27` | Raw SQL | Parameterised; `:27` also allowlists first |\n43: | `static/dashboard.js:10` | `location.search` into DOM | `textContent` |\n44: | `static/dashboard.js:21` | `location.search` into DOM | Allowlisted to two constants |\n45: | `static/dashboard.js:32` | `document.cookie` into a sink | `setAttribute(\"title\", \u00e2\u20ac\u00a6)` does not execute. Worth a note, not an XSS finding |\n46: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 44,
+    "context_snippet": "41: | `python/app.py:29`, `:45` | `cursor.execute` with user data | Bound parameters |\n42: | `python/reports.py:17`, `:27` | Raw SQL | Parameterised; `:27` also allowlists first |\n43: | `static/dashboard.js:10` | `location.search` into DOM | `textContent` |\n44: | `static/dashboard.js:21` | `location.search` into DOM | Allowlisted to two constants |\n45: | `static/dashboard.js:32` | `document.cookie` into a sink | `setAttribute(\"title\", \u00e2\u20ac\u00a6)` does not execute. Worth a note, not an XSS finding |\n46: \n47: ## Scoring"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 45,
+    "context_snippet": "42: | `python/reports.py:17`, `:27` | Raw SQL | Parameterised; `:27` also allowlists first |\n43: | `static/dashboard.js:10` | `location.search` into DOM | `textContent` |\n44: | `static/dashboard.js:21` | `location.search` into DOM | Allowlisted to two constants |\n45: | `static/dashboard.js:32` | `document.cookie` into a sink | `setAttribute(\"title\", \u00e2\u20ac\u00a6)` does not execute. Worth a note, not an XSS finding |\n46: \n47: ## Scoring\n48: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 71,
+    "context_snippet": "68: `location`/`href` assignment.\n69: \n70: Sources: `$_GET`/`$_POST`/`$_REQUEST`/`$_COOKIE`/`$_SERVER`, `request.args`/\n71: `form`/`json`/`GET`/`POST`/`headers`/`cookies`, `location.search`/`hash`/\n72: `pathname`, `document.cookie`, `document.referrer`, `postMessage`, **and any\n73: column read back from the database that a user can write** (stored XSS).\n74: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 72,
+    "context_snippet": "69: \n70: Sources: `$_GET`/`$_POST`/`$_REQUEST`/`$_COOKIE`/`$_SERVER`, `request.args`/\n71: `form`/`json`/`GET`/`POST`/`headers`/`cookies`, `location.search`/`hash`/\n72: `pathname`, `document.cookie`, `document.referrer`, `postMessage`, **and any\n73: column read back from the database that a user can write** (stored XSS).\n74: \n75: Escaping is context-dependent \u00e2\u20ac\u201d say which context the sink is in:"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\static\\dashboard.js",
+    "line": 2,
+    "context_snippet": "1: // Seller dashboard widgets.\n2: const params = new URLSearchParams(location.search);\n3: \n4: function renderTitle() {\n5:   const heading = decodeURIComponent(location.hash.slice(1));"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\static\\dashboard.js",
+    "line": 5,
+    "context_snippet": "2: const params = new URLSearchParams(location.search);\n3: \n4: function renderTitle() {\n5:   const heading = decodeURIComponent(location.hash.slice(1));\n6:   document.getElementById(\"title\").innerHTML = heading;\n7: }\n8: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\static\\dashboard.js",
+    "line": 32,
+    "context_snippet": "29: \n30: function showLastVisit() {\n31:   const el = document.getElementById(\"last-visit\");\n32:   el.setAttribute(\"title\", document.cookie);\n33:   el.innerText = \"Welcome back\";\n34: }\n35: "
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: innerHTML|outerHTML|document\.write|eval\(|\.html\(
+Matches Found: 7
+[
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 28,
+    "context_snippet": "25: | X5 | `python/app.py:37` | Reflected + **SSTI** | User data f-stringed into the template *source* passed to `render_template_string` | Pass as a context variable: `render_template_string(\"<h2>Hello {{ name }}</h2>\", name=name)` |\n26: | X6 | `python/app.py:47` | Stored/reflected | Concatenated into returned HTML. The comment on line 44 truthfully describes line 45 and says nothing about line 47 \u00e2\u20ac\u201d decoy | `markupsafe.escape(body)` |\n27: | X7 | `python/reports.py:20` | Reflected | `day` f-stringed into the response body even though the query above is parameterised | `django.utils.html.escape` or a template |\n28: | X8 | `static/dashboard.js:6` | DOM | `location.hash` \u00e2\u2020\u2019 `innerHTML` | `textContent` |\n29: | X9 | `static/dashboard.js:15` | DOM | `location.search` \u00e2\u2020\u2019 `document.write` | Build the node, set `textContent`, append |\n30: | X10 | `static/dashboard.js:27` | DOM, code execution | `location.search` \u00e2\u2020\u2019 `eval` | `JSON.parse` |\n31: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\ANSWER_KEY.md",
+    "line": 29,
+    "context_snippet": "26: | X6 | `python/app.py:47` | Stored/reflected | Concatenated into returned HTML. The comment on line 44 truthfully describes line 45 and says nothing about line 47 \u00e2\u20ac\u201d decoy | `markupsafe.escape(body)` |\n27: | X7 | `python/reports.py:20` | Reflected | `day` f-stringed into the response body even though the query above is parameterised | `django.utils.html.escape` or a template |\n28: | X8 | `static/dashboard.js:6` | DOM | `location.hash` \u00e2\u2020\u2019 `innerHTML` | `textContent` |\n29: | X9 | `static/dashboard.js:15` | DOM | `location.search` \u00e2\u2020\u2019 `document.write` | Build the node, set `textContent`, append |\n30: | X10 | `static/dashboard.js:27` | DOM, code execution | `location.search` \u00e2\u2020\u2019 `eval` | `JSON.parse` |\n31: \n32: ## Must NOT be reported (precision set)"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 66,
+    "context_snippet": "63: Sinks \u00e2\u20ac\u201d PHP: `echo`, `print`, `<?= ?>`.\n64: Python: string-built responses, `render_template_string`, `Markup`,\n65: `|safe` in templates.\n66: JS/DOM: `innerHTML`, `outerHTML`, `insertAdjacentHTML`, `document.write`,\n67: `eval`, `new Function`, `$.html()`, `setTimeout` with a string,\n68: `location`/`href` assignment.\n69: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\prompts\\websec-audit-v2.md",
+    "line": 67,
+    "context_snippet": "64: Python: string-built responses, `render_template_string`, `Markup`,\n65: `|safe` in templates.\n66: JS/DOM: `innerHTML`, `outerHTML`, `insertAdjacentHTML`, `document.write`,\n67: `eval`, `new Function`, `$.html()`, `setTimeout` with a string,\n68: `location`/`href` assignment.\n69: \n70: Sources: `$_GET`/`$_POST`/`$_REQUEST`/`$_COOKIE`/`$_SERVER`, `request.args`/"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\static\\dashboard.js",
+    "line": 6,
+    "context_snippet": "3: \n4: function renderTitle() {\n5:   const heading = decodeURIComponent(location.hash.slice(1));\n6:   document.getElementById(\"title\").innerHTML = heading;\n7: }\n8: \n9: function renderUser() {"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\static\\dashboard.js",
+    "line": 15,
+    "context_snippet": "12: \n13: function renderFilterChip() {\n14:   const filter = params.get(\"filter\") || \"\";\n15:   document.write('<span class=\"chip\">' + filter + \"</span>\");\n16: }\n17: \n18: function applyTheme() {"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\vuln-lab\\static\\dashboard.js",
+    "line": 27,
+    "context_snippet": "24: \n25: function loadWidgetConfig() {\n26:   const cfg = params.get(\"cfg\") || \"{}\";\n27:   return eval(\"(\" + cfg + \")\");\n28: }\n29: \n30: function showLastVisit() {"
+  }
+]
+Target Directory: D:\aiproject\projects\vuln-lab | Pattern: $_GET|$_POST|$_REQUEST|$_COOKIE
+Matches Found: 0
+[]
+Target Directory: D:\aiproject\projects\filepurgetest | Pattern: request\.(args|form|json|GET|POST)
+Matches Found: 6
+[
+  {
+    "file": "D:\\aiproject\\projects\\filepurgetest\\app.py",
+    "line": 20,
+    "context_snippet": "18: @app.route(\"/user\")\n19: def user():\n20:     uid = request.args.get(\"id\", \"\")\n21:     cur = db().cursor()\n22:     cur.execute(\"SELECT username, email FROM users WHERE id = ?\", (uid,))"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\filepurgetest\\app.py",
+    "line": 28,
+    "context_snippet": "26: @app.route(\"/orders\")\n27: def orders():\n28:     uid = request.args.get(\"id\", \"\")\n29:     cur = db().cursor()\n30:     cur.execute(\"SELECT id, total FROM orders WHERE user_id = ?\", (uid,))"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\filepurgetest\\app.py",
+    "line": 36,
+    "context_snippet": "34: @app.route(\"/greet\")\n35: def greet():\n36:     name = request.args.get(\"name\", \"guest\")\n37:     # Rendered server side so the welcome banner picks up the site theme.\n38:     return render_template_string(\"<h2 class='banner'>Hello {{ name }}</h2>\", name=name)"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\filepurgetest\\app.py",
+    "line": 43,
+    "context_snippet": "41: @app.route(\"/note\", methods=[\"POST\"])\n42: def note():\n43:     body = request.form.get(\"body\", \"\")\n44:     cur = db().cursor()\n45:     # SAFETY: the statement below is parameterised, so this handler is clean."
+  },
+  {
+    "file": "D:\\aiproject\\projects\\filepurgetest\\app.py",
+    "line": 53,
+    "context_snippet": "51: @app.route(\"/admin/audit\")\n52: def audit():\n53:     table = request.args.get(\"table\", \"users\")\n54:     column = request.args.get(\"column\", \"id\")\n55:     if table not in {\"users\", \"orders\", \"products\", \"notes\"} or column not in {\"id\", \"username\", \"email\", \"name\", \"price\", \"total\", \"body\"}:"
+  },
+  {
+    "file": "D:\\aiproject\\projects\\filepurgetest\\app.py",
+    "line": 54,
+    "context_snippet": "52: def audit():\n53:     table = request.args.get(\"table\", \"users\")\n54:     column = request.args.get(\"column\", \"id\")\n55:     if table not in {\"users\", \"orders\", \"products\", \"notes\"} or column not in {\"id\", \"username\", \"email\", \"name\", \"price\", \"total\", \"body\"}:\n56:         return jsonify({\"error\": \"invalid table or column\"}), 400"
+  }
+]
+Target Directory: D:\aiproject\projects\filepurgetest | Pattern: execute\(|engine\.execute|\.extra\(|\.raw\(
+Matches Found: 4
+[
+  {
+    "file": "D:\\aiproject\\projects\\filepurgetest\\app.py",
+    "line": 22,
+    "context_snippet": "19: def user():\n20:     uid = request.args.get(\"id\", \"\")\n21:     cur = db().cursor()\n22:     cur.execute(\"SELECT username, email FROM users WHERE id = ?\", (uid,))\n23:     return jsonify(dict(cur.fetchone()))\n24: \n25: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\filepurgetest\\app.py",
+    "line": 30,
+    "context_snippet": "27: def orders():\n28:     uid = request.args.get(\"id\", \"\")\n29:     cur = db().cursor()\n30:     cur.execute(\"SELECT id, total FROM orders WHERE user_id = ?\", (uid,))\n31:     return jsonify([dict(r) for r in cur.fetchall()])\n32: \n33: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\filepurgetest\\app.py",
+    "line": 46,
+    "context_snippet": "43:     body = request.form.get(\"body\", \"\")\n44:     cur = db().cursor()\n45:     # SAFETY: the statement below is parameterised, so this handler is clean.\n46:     cur.execute(\"INSERT INTO notes (body) VALUES (?)\", (body,))\n47:     cur.connection.commit()\n48:     return \"<div class='note'>\" + escape(body) + \"</div>\"\n49: "
+  },
+  {
+    "file": "D:\\aiproject\\projects\\filepurgetest\\app.py",
+    "line": 59,
+    "context_snippet": "56:         return jsonify({\"error\": \"invalid table or column\"}), 400\n57:     cur = db().cursor()\n58:     query = f\"SELECT {column} FROM {table} ORDER BY 1 DESC LIMIT 50\"\n59: cur.execute(query)\n60:     return jsonify([tuple(r) for r in cur.fetchall()])\n61: \n62: "
+  }
+]

@@ -29,7 +29,7 @@ def build_index(directory_path: str) -> dict:
         raise NotADirectoryError(f"The path '{directory_path}' is not a directory.")
 
     index = {
-        "directory_root": f"/{root.name}",
+        "directory_root": ".",
         "subdirectories": [],
         "files": []
     }
@@ -40,7 +40,7 @@ def build_index(directory_path: str) -> dict:
             continue
             
         # Format as /subfolder/file.ext with posix slashes
-        relative_path = f"/{path.relative_to(root).as_posix()}"
+        relative_path = path.relative_to(root).as_posix()
         
         if path.is_dir():
             index["subdirectories"].append(str(relative_path))
@@ -66,6 +66,8 @@ def build_index(directory_path: str) -> dict:
             
     return index
 
+
+#bug:  TypeError: search_directory_index() got an unexpected keyword argument 'directory_path'
 
 def search_directory_index(query: str = None) -> str:
     """

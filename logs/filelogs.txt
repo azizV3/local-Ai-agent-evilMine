@@ -1,0 +1,58 @@
+target path:D:\aiproject\projects\project 2\app.py | old content:  # VULNERABILITY 1: SQL Injection via direct f-string interpolation | new edited content: // Fixed SQL Injection vulnerability by using parameterized queries 
+target path:D:\aiproject\projects\project 2\index.html | old content:  document.getElementById('theme-display').innerHTML = userTheme; | new edited content: document.getElementById('theme-display').textContent = userTheme; 
+target path:D:\aiproject\projects\project 3\app.py | old content:  db_query = f"SELECT username, role FROM users WHERE username = '{user_query}'" | new edited content: db_query = "SELECT username, role FROM users WHERE username = ?" 
+target path:D:\aiproject\projects\p4\templates\app.py | old content:  db_query = f"SELECT username, role FROM users WHERE username = '{user_query}'" | new edited content: db_query = 'SELECT username, role FROM users WHERE username = ?' 
+target path:D:\aiproject\projects\p4\templates\app.py | old content:  html_response += f"<li>{row[0]} - {row[1]}</li>" | new edited content: html_response += f'<li>{html.escape(row[0])} - {html.escape(row[1])}</li>' 
+target path:D:\aiproject\projects\vuln-lab\php\login.php | old content:  $sql = "SELECT id, role FROM users WHERE username = '" . $user . "' AND password = '" . md5($pass) . "'";
+$res = mysqli_query($conn, $sql); | new edited content: $stmt = mysqli_prepare($conn, "SELECT id, role FROM users WHERE username = ? AND password = ?");
+mysqli_stmt_bind_param($stmt, "ss", $user, md5($pass));
+mysqli_stmt_execute($stmt);
+$res = mysqli_stmt_get_result($stmt); 
+target path:D:\aiproject\projects\vuln-lab\php\login.php | old content:  echo "Welcome back, " . $_POST['username']; | new edited content: echo "Welcome back, " . htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8'); 
+target path:D:\aiproject\projects\vuln-lab\php\search.php | old content:  $sql = "SELECT name, price FROM products WHERE name LIKE '%$q%' ORDER BY $sort LIMIT 20 OFFSET $offset";
+$rows = $pdo->query($sql)->fetchAll(); | new edited content: $sort = in_array($sort, ['name', 'price'], true) ? $sort : 'name';
+$like = '%' . $q . '%';
+$stmt = $pdo->prepare("SELECT name, price FROM products WHERE name LIKE ? ORDER BY $sort LIMIT 20 OFFSET $offset");
+$stmt->execute([$like]);
+$rows = $stmt->fetchAll(); 
+target path:D:\aiproject\projects\vuln-lab\php\search.php | old content:  <h1>Results for <?= $q ?></h1> | new edited content: <h1>Results for <?= e($q) ?></h1> 
+target path:D:\aiproject\projects\vuln-lab\php\search.php | old content:  <li data-sku="<?= $r['sku'] ?>"> | new edited content: <li data-sku="<?= e($r['sku']) ?>"> 
+target path:D:\aiproject\projects\vuln-lab\php\profile.php | old content:  function build_where($field, $value)
+{
+    return $field . " = '" . $value . "'";
+}
+
+ | new edited content:  
+target path:D:\aiproject\projects\vuln-lab\php\profile.php | old content:  function fetch_row(PDO $pdo, $table, $where)
+{
+    $sql = "SELECT * FROM $table WHERE $where";
+    return $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+} | new edited content: function fetch_row(PDO $pdo, $table, $field, $value)
+{
+    $sql = "SELECT * FROM $table WHERE $field = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$value]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+} 
+target path:D:\aiproject\projects\vuln-lab\php\profile.php | old content:  $profile = fetch_row($pdo, 'users', build_where('id', $id)); | new edited content: $profile = fetch_row($pdo, 'users', 'id', $id); 
+target path:D:\aiproject\projects\vuln-lab\php\profile.php | old content:  echo '<p>Bio: ' . $profile['bio'] . '</p>'; | new edited content: echo '<p>Bio: ' . e($profile['bio']) . '</p>'; 
+target path:D:\aiproject\projects\vuln-lab\python\app.py | old content:      cur.execute(f"SELECT username, email FROM users WHERE id = {uid}") | new edited content:     cur.execute("SELECT username, email FROM users WHERE id = ?", (uid,)) 
+target path:D:\aiproject\projects\vuln-lab\python\app.py | old content:      return render_template_string(f"<h2 class='banner'>Hello {name}</h2>") | new edited content:     return render_template_string("<h2 class='banner'>Hello {{ name }}</h2>", name=name) 
+target path:D:\aiproject\projects\vuln-lab\python\app.py | old content:  from flask import Flask, jsonify, render_template_string, request | new edited content: from flask import Flask, jsonify, render_template_string, request
+from markupsafe import escape 
+target path:D:\aiproject\projects\vuln-lab\python\app.py | old content:      return "<div class='note'>" + body + "</div>" | new edited content:     return "<div class='note'>" + escape(body) + "</div>" 
+target path:D:\aiproject\projects\vuln-lab\python\app.py | old content:      table = request.args.get("table", "users")
+    column = request.args.get("column", "id")
+    cur = db().cursor()
+    cur.execute("SELECT %s FROM %s ORDER BY 1 DESC LIMIT 50" % (column, table)) | new edited content:     table = request.args.get("table", "users")
+    column = request.args.get("column", "id")
+    if table not in {"users", "orders", "products", "notes"} or column not in {"id", "username", "email", "name", "price", "total", "body"}:
+        return jsonify({"error": "invalid table or column"}), 400
+    cur = db().cursor()
+    cur.execute("SELECT %s FROM %s ORDER BY 1 DESC LIMIT 50" % (column, table)) 
+target path:D:\aiproject\projects\vuln-lab\python\reports.py | old content:      qs = Order.objects.extra(where=["region = '%s'" % region]) | new edited content:     qs = Order.objects.filter(region=region) 
+target path:D:\aiproject\projects\vuln-lab\python\reports.py | old content:  from django.http import HttpResponse | new edited content: from django.http import HttpResponse
+from django.utils.html import escape 
+target path:D:\aiproject\projects\vuln-lab\python\reports.py | old content:      return HttpResponse(f"<p>Report for {day}: {total}</p>") | new edited content:     return HttpResponse(f"<p>Report for {escape(day)}: {total}</p>") 
+target path:D:\aiproject\projects\vuln-lab\python\app.py | old content:  cur.execute("SELECT %s FROM %s ORDER BY 1 DESC LIMIT 50" % (column, table)) | new edited content: query = f"SELECT {column} FROM {table} ORDER BY 1 DESC LIMIT 50"
+cur.execute(query) 

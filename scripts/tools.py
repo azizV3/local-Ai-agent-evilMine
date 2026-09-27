@@ -1,6 +1,7 @@
 
-from filetools.fileManager import write_to_file
+from filetools.fileManager import write_to_file, read_file, edit_file_content, get_file_size
 from filetools.filereadtools import search_directory_index
+from filetools.greptool import GrepTool
 from scratchpad.scratchpad import *
 import sys
 import json
@@ -60,7 +61,7 @@ basetools = [
                 "properties": {
                     "keywords": {
                         "type": "string",
-                        "description": "A keyword or comma-separated list of keywords to search for (for writing programs to file use keyword 'file', for scratchpad use keyword 'scratchpad', for searching files or see the current directory use 'index')."
+                        "description": "A keyword or comma-separated list of keywords to search for, Searchable keywords: index, file, scratchpad."
                     }
                 },
                 "required": ["keywords"]
@@ -129,10 +130,14 @@ def search_available_tools(keywords: str) -> str:
 tools_map = {
     "finish_conversation": finish_conversation,
     "write_to_file": write_to_file,
+    "read_file": read_file,
+    "get_file_size": get_file_size,
+    "edit_file_content": edit_file_content,
     "read_scratchpad": read_scratchpad,
     "update_scratchpad": update_scratchpad,
     "search_available_tools": search_available_tools,
-    "search_directory_index": search_directory_index
+    "search_directory_index": search_directory_index,
+    "scan_pattern":GrepTool.scan_pattern
 }
 
 

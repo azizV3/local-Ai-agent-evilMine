@@ -1,5 +1,5 @@
 @echo off
-D:
-cd /d "D:\aiproject\frontend"
+
+cd /d "%~dp0frontend"
 npm run dev:desktop
 pause

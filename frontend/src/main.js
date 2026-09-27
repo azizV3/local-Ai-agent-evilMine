@@ -27,7 +27,7 @@ function createWindow() {
   mainWindow.loadURL('http://localhost:5173');
 }
   ipcMain.handle('dialog:select-directory', async () => {
-  const defaultProjectsPath = path.resolve(app.getAppPath(), '..', 'projects');
+  const defaultProjectsPath = path.resolve(app.getAppPath(),'..', '..', 'projects');
   const result = await dialog.showOpenDialog({
     properties: ['openDirectory'],
     defaultPath: defaultProjectsPath,

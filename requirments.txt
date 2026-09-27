@@ -1,14 +1,41 @@
+# 1. Clone / navigate to the project root
+cd aiproject
+
+# 2. Create and activate a virtual environment (activation is the step that was missing)
 python -m venv venv
+venv\Scripts\activate          # Windows
+# source venv/bin/activate     # macOS/Linux
 
-ollama, pull preferred model and replace it in mine.py
-
-pip install fastapi 
+# 3. Install Python backend dependencies (into the now-activated venv)
+pip install fastapi
 pip install "uvicorn[standard]"
+pip install websockets
 pip install openai
 pip install pydantic
 
+# 4. Install and start Ollama
+#    - Install from https://ollama.com if not already present
+#    - Make sure the Ollama service is actually running before step 6
+#      (ollama serve, or launch the desktop app) — pulling the model
+#      alone does not start the service
+ollama pull <your-model-name>
+
+# 5. Set the model name in Mine.py
+#    QWEN27B_COMPATIBILITY branches into two separate model= values —
+#    update the one matching the model you pulled (or both, if you plan
+#    to switch between them)
+
+# 6. Frontend dependencies
 cd frontend
-
 npm install
+npm audit fix          # review changes before running with --force
 
-npm audit fix
+# 7. If concurrently/Electron are declared in a ROOT package.json rather
+#    than frontend/'s (check which file lists them) — run npm install
+#    there too, or `npm run dev:desktop` will fail even though step 6
+#    succeeded
+cd ..
+npm install             # only if step 7's check applies to your layout
+
+# 8. Run
+npm run dev:desktop     # starts frontend, Electron, and backend together

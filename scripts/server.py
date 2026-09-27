@@ -7,17 +7,27 @@ import asyncio
 
 from Mine import AsyncAgentManager, SAVE_DIR, client, ALLOW_PARALLEL_TOOLS
 import tools
+from tools import search_available_tools
 import filetools.fileManager as filemanager
 import filetools.filereadtools as filereadtools
+from modes import WEBMODEPROMPT
 PROJECT_MODE = False
+CURRENT_MODE = ""
 
-def get_system_instruction(allow_parallel, projectmode):
+def get_system_instruction(allow_parallel, curr_mode):
         base_prompt = (
             "You are an autonomous AI agent equipped with tools to assist the user. "
             "Analyze the user's request and naturally interweave conversational text with your tool requests. "
             "always test a tool before integrating it. "
             "you are equipped with a multitued of tools [file manipulation, indexing, scratchpad] you will need to use search_available_tools to find out how they work"
+            "If you are completely finished speaking to the user, you MUST output a JSON call for 'finish_conversation'.  If you need user input, you MUST call 'let_user_decide'."
         )
+        if curr_mode == 'webmode':
+            mode = WEBMODEPROMPT
+            
+
+
+            base_prompt += mode
         if allow_parallel:
             constraint = (
                 "STRUCTURAL RULE: You can call multiple JSON tool blocks in a single turn if the actions "
@@ -35,8 +45,13 @@ def get_system_instruction(allow_parallel, projectmode):
                 "2. SCHEMA ADHERENCE: Use EXACT parameter names and types from tool schemas. Do not invent or guess arguments."
                 "3. GROUNDED EXECUTION: Base actions and responses ONLY on actual tool outputs. If a tool fails or crashes, read the error, adjust arguments, and try again. Never invent file content or code snippets."
             )
+        if curr_mode == 'webmode':
+            constraint += search_available_tools('index,file,edit,scratchpad')
         
-        return base_prompt + constraint
+        base_prompt += constraint
+
+        
+        return base_prompt
 
 
 
@@ -63,11 +78,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Global dictionary or single active instanced target pointer 
+# Global dictionary 
 current_session = {"manager": AsyncAgentManager()}
 
 
-#data schemas using Pydantic FastAPI uses these to validate the data incoming from the user. 
+
 class SaveConfig(BaseModel):
     name: str
 
@@ -78,17 +93,21 @@ class InitConfig(BaseModel):
 class DirectoryConfig(BaseModel):
     directory_path: str
     project_mode: bool = False
+class ModeConfig(BaseModel):
+    mode: str
+    
 @app.get("/saves") 
 def get_available_saves():
     if SAVE_DIR.exists():
         return [item.name for item in SAVE_DIR.iterdir() if item.is_file()]
+        
     return []
 
 @app.post("/saves/initialize")
 def initialize_save_session(config: InitConfig):
     global current_session
     SAVE_DIR.mkdir(parents=True, exist_ok=True)
-    
+    print("initiating save session")
     if config.action == "L":
         target = SAVE_DIR / config.value
         if target.is_file():
@@ -104,7 +123,7 @@ def initialize_save_session(config: InitConfig):
         file_path = SAVE_DIR / f"save{config.value}.json"
         if not file_path.is_file():
             with open(file_path, "w") as f:
-                json.dump([{"role": "system", "content": get_system_instruction(ALLOW_PARALLEL_TOOLS,PROJECT_MODE)}], f)
+                json.dump([{"role": "system", "content": get_system_instruction(ALLOW_PARALLEL_TOOLS,CURRENT_MODE)}], f)
         
         manager = AsyncAgentManager(history_file=file_path)
         current_session["manager"] = manager
@@ -137,6 +156,26 @@ async def summarize_save_file(config: SaveConfig):
         
     return {"status": f"Summary file stored completely at {summary_path.name}"}
 
+@app.post("/mode/switch")
+
+def switchmode(config: ModeConfig):
+    global CURRENT_MODE
+    CURRENT_MODE = config.mode
+    manager = current_session.get("manager")
+    
+    
+    if manager and hasattr(manager, "messages") and manager.messages is not None:
+        if CURRENT_MODE == "webmode":
+            manager.messages.append({
+                "role": "system", 
+                "content": modes.WEBMODEPROMPT
+            })
+        return {"status": f"Mode switched to {CURRENT_MODE} for active session."}
+    # fallback
+    return {"status": f"Default mode set to {CURRENT_MODE} for upcoming sessions."}
+
+    
+
 @app.post("/saves/directory")
 def update_session_directory(config: DirectoryConfig):
     global current_session
@@ -151,43 +190,63 @@ def update_session_directory(config: DirectoryConfig):
 
     if config.project_mode:
         project_instruction = (
-            "PROJECT MODE ACTIVE: You are operating directly within a main project directory workspace. "
-            "When analyzing, modifying, or creating files, you MUST use the indexing tools to navigate "
-            "the project structure and search/manipulation tools to accurately query and edit "
+            f"PROJECT MODE ACTIVE: You are operating directly within a main project directory workspace:"
+            "When analyzing, modifying, or creating files, you MUST use the indexing tools 'search_directory_index' to navigate "
+            "the project structure and search/manipulation tools (you are equipped with grep, read_file, edit_file, write_to_file tools) to accurately query and edit "
             "files within the main project directory."
+            "example: if the indexed directory shows project/file.txt you only need to pass in file.txt in the function parameters e.g read_file(file.txt)"
         )
-        # Inject instruction directly into active conversation history
+        if CURRENT_MODE !='webmode':
+            project_instruction += search_available_tools('index,file,edit,scratchpad')
+        
+
         manager.messages.append({"role": "system", "content": project_instruction})
     
 
-    # Save it to the active session object for persistence
+    
     if hasattr(manager, "project_directory"):
         manager.project_mode = config.project_mode
         manager.project_directory = config.directory_path
-    filereadtools.search_directory_index(query=None) #indexes the current directory
+    filereadtools.search_directory_index(query=None) 
     
     return {"status": f"Workspace directory updated to: {config.directory_path} "}
 
 
 @app.websocket("/ws/agent")
 async def agent_websocket_endpoint(websocket: WebSocket):
+    #future wait var would force the waiting code to sit in a loop constantly rechecking
+    #pending_edits: dict[str, asyncio.Future] = {}
     await websocket.accept()
     manager: AsyncAgentManager = current_session["manager"]
     
+    async def token_callback(token: str):
+        await websocket.send_json({"type": "token", "data": token})
+        
+    async def status_callback(status: str):
+        await websocket.send_json({"type": "status", "data": status})
+        
+    async def tool_callback(execution_frame: dict):
+        await websocket.send_json({"type": "tool_result", "data": execution_frame})
+    '''async def edit_confirmation(edit_content: dict) -> bool:
+        edit_id = edit_content["edit_id"]
+        loop = asyncio.get_running_loop()
+        future = loop.create_future()
+        pending_edits[edit_id] = future
+        await websocket.send_json({"type": "edit_confirmation", "data": edit_content})
+        try:
+            return await asyncio.wait_for(future, timeout=300)
+        except asyncio.TimeoutError:
+            return False
+        finally:
+            pending_edits.pop(edit_id, None)'''
+
     try:
         while True:
             raw_data = await websocket.receive_text()
             payload = json.loads(raw_data)
             user_input = payload.get("message", "")
             
-            async def token_callback(token: str):
-                await websocket.send_json({"type": "token", "data": token})
-                
-            async def status_callback(status: str):
-                await websocket.send_json({"type": "status", "data": status})
-                
-            async def tool_callback(execution_frame: dict):
-                await websocket.send_json({"type": "tool_result", "data": execution_frame})
+
 
             #Wrap the turn routine execution block inside the lock
             async with generation_lock:  # Forces single-file sequential execution 
@@ -195,7 +254,8 @@ async def agent_websocket_endpoint(websocket: WebSocket):
                     user_input=user_input,
                     on_token=token_callback,
                     on_status=status_callback,
-                    on_tool=tool_callback
+                    on_tool=tool_callback,
+                    #on_edit=edit_confirmation
                 )
             
             await websocket.send_json({"type": "turn_complete"})
