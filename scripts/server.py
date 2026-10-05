@@ -1,4 +1,4 @@
-# server.py
+
 import json
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
@@ -115,7 +115,7 @@ def initialize_save_session(config: InitConfig):
             current_session["manager"] = manager
             return {
                 "status": f"Loaded save file: {config.value}",
-                "messages": manager.messages  # <-- Returns historical chat logs to React
+                "messages": manager.messages  
             }
         return {"status": "File not found", "messages": []}
         
@@ -171,7 +171,7 @@ def switchmode(config: ModeConfig):
                 "content": modes.WEBMODEPROMPT
             })
         return {"status": f"Mode switched to {CURRENT_MODE} for active session."}
-    # fallback
+
     return {"status": f"Default mode set to {CURRENT_MODE} for upcoming sessions."}
 
     
@@ -184,7 +184,7 @@ def update_session_directory(config: DirectoryConfig):
     if not manager:
         return {"status": "Error: No active session loaded."}
     
-    # swap the workspace path for the AI tools script /// to change !!
+    
     filereadtools.TARGET_DIRECTORY = config.directory_path
     filemanager.TARGET_DIRECTORY = config.directory_path
 
@@ -214,8 +214,6 @@ def update_session_directory(config: DirectoryConfig):
 
 @app.websocket("/ws/agent")
 async def agent_websocket_endpoint(websocket: WebSocket):
-    #future wait var would force the waiting code to sit in a loop constantly rechecking
-    #pending_edits: dict[str, asyncio.Future] = {}
     await websocket.accept()
     manager: AsyncAgentManager = current_session["manager"]
     
@@ -227,18 +225,6 @@ async def agent_websocket_endpoint(websocket: WebSocket):
         
     async def tool_callback(execution_frame: dict):
         await websocket.send_json({"type": "tool_result", "data": execution_frame})
-    '''async def edit_confirmation(edit_content: dict) -> bool:
-        edit_id = edit_content["edit_id"]
-        loop = asyncio.get_running_loop()
-        future = loop.create_future()
-        pending_edits[edit_id] = future
-        await websocket.send_json({"type": "edit_confirmation", "data": edit_content})
-        try:
-            return await asyncio.wait_for(future, timeout=300)
-        except asyncio.TimeoutError:
-            return False
-        finally:
-            pending_edits.pop(edit_id, None)'''
 
     try:
         while True:
@@ -246,16 +232,13 @@ async def agent_websocket_endpoint(websocket: WebSocket):
             payload = json.loads(raw_data)
             user_input = payload.get("message", "")
             
-
-
-            #Wrap the turn routine execution block inside the lock
-            async with generation_lock:  # Forces single-file sequential execution 
+            async with generation_lock:  
                 await manager.run_turn(
                     user_input=user_input,
                     on_token=token_callback,
                     on_status=status_callback,
                     on_tool=tool_callback,
-                    #on_edit=edit_confirmation
+                   
                 )
             
             await websocket.send_json({"type": "turn_complete"})
